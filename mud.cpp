@@ -3,6 +3,7 @@
 #include <cctype>
 // #include "room.h"
 #include "player.h"
+#include "bag.h"
 // #include "enemies.h"
 
 enum Directions { //Use these for moving in the vector. USE AS INTEGERS.
@@ -20,7 +21,8 @@ int main() {
     // size_t sizeOfDungeon = 5;
     //const Room *rooms;
     Player player;
-    player.decisions();
+    Bag bag;
+    player.decisions(bag);
     // std::cout << player.getAttack() << ' ' << player.getHP() << std::endl;
     //int currentRoom = 0;
     // std::vector<std::vector<Room> > dungeon(sizeOfDungeon, std::vector<Room>(sizeOfDungeon)); //Each position corresponds to a new room.

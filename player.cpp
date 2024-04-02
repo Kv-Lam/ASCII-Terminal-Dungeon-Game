@@ -30,20 +30,21 @@ const std::string Player::getPlayerName() {
     return name;
 }
 
-const void Player::decisions() {
+const void Player::decisions(Bag &inventory) {
     char choice = ' ';
     while(choice != 'Q') {
-        std::cout << "\n\033[4mAvailable Options\033[0m\nM) Move\nI) Inventory\nS) Stats\nQ) Quit\nPlease enter your letter choice: ";
+        std::cout << "\n\033[4mAvailable Options\033[0m\nM) Move\nB) Bag\nS) Stats\nQ) Quit\nPlease enter your letter choice: ";
         while(true) {
             std::cin >> choice;
             choice = std::toupper(choice);
-            if(choice == 'M' || choice == 'I' || choice == 'S' || choice == 'Q') break;
-            std::cout << "Invalid choice. Please enter M, I, S, or Q: ";
+            if(choice == 'M' || choice == 'B' || choice == 'S' || choice == 'Q') break;
+            std::cout << "Invalid choice. Please enter M, B, S, or Q: ";
         }
         switch(choice) {
-            case 'M':
-                break;
-            case 'I':
+            // case 'M': For movement if implemented.
+            //     break;
+            case 'B':
+                inventory.interactBag(this);
                 break;
             case 'S':
                 std::cout << "\n\033[4m" << name << "'s stats\033[0m" << std::endl; //Underlined playerName's stats.
