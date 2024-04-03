@@ -1,6 +1,7 @@
+#include <iostream>
 #include "room.h"
 
-Room::Room() : dungeonRoom(3 , std::vector<char>(8, '.')){
+Room::Room() {
     north = south = east = west = -1;
 }
 
@@ -35,5 +36,25 @@ void Room::setExit(Room &room, const char direction, const int roomIndex) {
             west = roomIndex;
             break;
     }
+    return;
+}
+
+void Room::printRoomASCII() {
+    std::cout << ASCIIRoomArt << std::endl;
+    return;
+}
+
+void Room::printEnemyASCII() {
+    std::cout << ASCIIEnemyArt << std::endl;
+    return;
+}
+
+void Room::createEnemy(std::string enemyName, int HP, int atk) {
+    enemy = new Enemies(enemyName, HP, atk); //First check if there is an enemy.
+    return;
+}
+
+void Room::deleteEnemy() {
+    delete enemy; //First check if enemy's health is == 0.
     return;
 }
