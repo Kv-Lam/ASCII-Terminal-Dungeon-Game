@@ -4,20 +4,29 @@
 #include <string>
 #include <vector>
 
+#include "enemies.h"
+
 class Room {
     public:
         Room();
         std::string name;
         std::string description;
-        std::vector<std::vector<char> > dungeonRoom; //Interior is 3x8, but the walls will make it a 5 x 10. Used to print out the room once player enters.
+        std::string ASCIIRoomArt;
+        std::string ASCIIEnemyArt; //MAYBE?
+        void printRoomASCII();
+        void printEnemyASCII();
     private:
         int getExit(const Room &room, const char direction);
         void setExit(Room &room, const char direction, const int roomIndex);
+        void createEnemy(std::string enemyName, int HP, int atk);
+        void deleteEnemy();
+        Enemies *enemy;
+        std::string ASCIIRoomArt;
         //Following four variables will hold which room the direction leads to.
         int north; 
         int south;
         int east;
-        int west;
+        int west; 
 };
 
 #endif
