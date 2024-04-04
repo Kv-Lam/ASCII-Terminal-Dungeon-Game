@@ -7,8 +7,7 @@
 class Enemies {
 friend class Room;
     public:
-        Enemies(std::string name, int HP, int atk);
-        ~Enemies();
+        Enemies(std::string enemyName, int HP, int atk);
         std::string getEnemyName();
         int getHP();
         int getMaxHP();
