@@ -5,12 +5,13 @@
 #include <unordered_map>
 #include "player.h"
 
+class Player; //Forward declaring player class to allow for compiling.
+
 class Bag {
-    friend class Player;
     public:
         Bag();
-    private:
         void interactBag(Player *player);
+    private:
         void addItem(const std::string itemName, int quantity);
         void removeItem(const std::string itemName, int quantity);
         std::unordered_map<std::string, int> bag; //Item name is mapped to quantity.

@@ -5,6 +5,10 @@ Room::Room() {
     north = south = east = west = -1;
 }
 
+Room::~Room() {
+    delete enemy;
+}
+
 int Room::getExit(const Room &room, const char direction) {
     switch(direction)
     {
@@ -50,11 +54,11 @@ void Room::printEnemyASCII() {
 }
 
 void Room::createEnemy(std::string enemyName, int HP, int atk) {
-    enemy = new Enemies(enemyName, HP, atk); //First check if there is an enemy.
+    enemy = new Enemies(enemyName, HP, atk); //Before calling this, first check if there is an enemy.
     return;
 }
 
 void Room::deleteEnemy() {
-    delete enemy; //First check if enemy's health is == 0.
+    delete enemy; //Before calling this, first check if enemy's health is == 0.
     return;
 }

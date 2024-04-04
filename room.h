@@ -6,9 +6,12 @@
 
 #include "enemies.h"
 
+class Enemies; //Forward declaration for compiling.
+
 class Room {
     public:
         Room();
+        ~Room();
         std::string name;
         std::string description;
         std::string ASCIIRoomArt;
@@ -21,7 +24,6 @@ class Room {
         void createEnemy(std::string enemyName, int HP, int atk);
         void deleteEnemy();
         Enemies *enemy;
-        std::string ASCIIRoomArt;
         //Following four variables will hold which room the direction leads to.
         int north; 
         int south;

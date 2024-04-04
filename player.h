@@ -5,6 +5,8 @@
 #include <string>
 #include "bag.h"
 
+class Bag; //Forward declaration of Bag to allow compiling.
+
 class Player {
     friend class Bag;
     public:

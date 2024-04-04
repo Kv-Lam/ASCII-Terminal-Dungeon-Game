@@ -4,7 +4,7 @@ SHELL = bash
 
 all: mud
 
-mud: mud.o player.o bag.o room.o
+mud: mud.o player.o bag.o room.o enemies.o
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 mud.o:	mud.cpp
@@ -18,6 +18,9 @@ bag.o:	bag.cpp bag.h
 
 room.o:	room.cpp room.h
 	$(CXX) $(CXXFLAGS) -c room.cpp
+
+enemies.o: enemies.cpp enemies.h
+	$(CXX) $(CXXFLAGS) -c enemies.cpp
 
 clean:
 	rm -f *.o mud
