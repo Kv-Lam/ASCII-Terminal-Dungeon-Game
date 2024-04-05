@@ -6,18 +6,18 @@ Enemies::Enemies(std::string enemyName, int HP, int atk) {
     this->atk = atk;
 }
 
-std::string Enemies::getEnemyName() {
+const std::string Enemies::getEnemyName() {
     return enemyName;
 }
 
-int Enemies::getHP() {
+const int Enemies::getHP() {
     return HP;
 }
 
-int Enemies::getMaxHP() {
+const int Enemies::getMaxHP() {
     return maxHP;
 }
 
-int Enemies::getAttack() {
+const int Enemies::getAttack() {
     return atk;
 }
