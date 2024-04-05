@@ -15,10 +15,6 @@ enum Directions { //Use these for moving in the vector. USE AS INTEGERS. MAYBE N
     Down = -1,
 };
 
-void readInFile() {
-    return;
-}
-
 int getExit(const Room &room, const char direction) {
     switch(direction)
     {
@@ -69,18 +65,16 @@ const Room *loadRooms(const std::string dungeonFilename)
     //Following if-statement checks for any file opening errors.
     if(!(fin.is_open()))
     {
-        std::cerr << "error: file did not open correctly" << std::endl;
+        std::cerr << "Error: File did not open correctly" << std::endl;
         exit(1);
     }
 
     size_t tildeCount = 0; //# of tildes inside file. 3 for each room.
-    std::string stringHolder; //Holds strings for counting # of tildes
-    while(getline(fin, stringHolder, '~')) //Finds total of tildes inside file.
-    {
-        tildeCount++;
-    }
-
-    size_t roomCount = tildeCount / 3; //Calculates # of rooms.
+    std::string stringHolder; //Holds strings for counting # of tildes.
+    while(getline(fin, stringHolder, '~')) tildeCount++; //Finds total of tildes inside file.
+    
+    //Calculates # of rooms. CHANGE DENOMINATOR TO HOWEVER MANY ARE NEEDED. I PUT 6, ONE PER READ IN (art counts as 2 because of enemy and room art).
+    size_t roomCount = tildeCount / 6;
 
     Room *rooms = new Room[roomCount];
 
@@ -88,7 +82,8 @@ const Room *loadRooms(const std::string dungeonFilename)
     fin.clear();
     fin.seekg(0);
 
-    //Reads in and stores the room's title, description, and exits.
+    //Reads in and stores the room's title, description, exits, enemy, and arts.
+    //TODO: ADD READING IN THE ARTS AND ENEMY.
     for (size_t i = 0; i < roomCount; i++) {
         //Following four lines read and store the name and description then removes extra whitespaces.
         getline(fin, rooms[i].name, '~');
@@ -103,11 +98,7 @@ const Room *loadRooms(const std::string dungeonFilename)
         std::istringstream sin(exits);
         char direction; //Direction of the exit.
         int room_index; //Room the exit leads to.
-        while(sin >> direction >> room_index) //Reads in the direction/index and sets the room exits.
-        {
-            setExit(rooms[i], direction, room_index);
-        }
-
+        while(sin >> direction >> room_index) setExit(rooms[i], direction, room_index); //Reads in the direction/index and sets the room exits.
         sin.clear(); //Clears istringstream for use again.
     }
 
@@ -125,7 +116,7 @@ int main() {
     Bag bag;
     player.decisions(bag);
     const Room *rooms;
-    
+
     // std::cout << player.getAttack() << ' ' << player.getHP() << std::endl;
     //int currentRoom = 0;
     // std::vector<std::vector<Room> > dungeon(sizeOfDungeon, std::vector<Room>(sizeOfDungeon)); //Each position corresponds to a new room.
