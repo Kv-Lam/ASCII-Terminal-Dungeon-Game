@@ -1,21 +1,122 @@
 #include <iostream>
 #include <vector>
 #include <cctype>
-// #include "room.h"
+#include <fstream>
+#include <sstream>
+#include "room.h"
 #include "player.h"
 #include "bag.h"
 // #include "enemies.h"
 
-enum Directions { //Use these for moving in the vector. USE AS INTEGERS.
+enum Directions { //Use these for moving in the vector. USE AS INTEGERS. MAYBE NOT USING THESE IF NO PRINTING CHARACTER AND MOVEMENT.
     Left = -1,
     Right = 1,
     Up = 1,
     Down = -1,
 };
 
-enum ObjectsInRoom { //USE THESE AS CHAR VALUES IN ASCII TABLE FOR PRINTING DUNGEON ROOMS.
-    Door = 219,
-};
+void readInFile() {
+    return;
+}
+
+int getExit(const Room &room, const char direction) {
+    switch(direction)
+    {
+        case 'n':
+            return room.north;
+        case 's':
+            return room.south;
+        case 'e':
+            return room.east;
+        case 'w':
+            return room.west;
+    }
+    return 0; //Returns 0 to avoid warnings.
+}
+
+void setExit(Room &room, const char direction, const int roomIndex) {
+    switch(direction)
+    {
+        case 'n':
+            room.north = roomIndex;
+            break;
+        case 's':
+            room.south = roomIndex;
+            break;
+        case 'e':
+            room.east = roomIndex;
+            break;
+        case 'w':
+            room.west = roomIndex;
+            break;
+    }
+    return;
+}
+
+void stripWhitespace(std::string &str) {
+    while (isspace(str.back())) {
+        str.pop_back();
+    }
+    while (isspace(str.front())) {
+        str.erase(str.begin());
+    }
+    return;
+}
+
+const Room *loadRooms(const std::string dungeonFilename) 
+{
+    std::ifstream fin(dungeonFilename);
+    //Following if-statement checks for any file opening errors.
+    if(!(fin.is_open()))
+    {
+        std::cerr << "error: file did not open correctly" << std::endl;
+        exit(1);
+    }
+
+    size_t tildeCount = 0; //# of tildes inside file. 3 for each room.
+    std::string stringHolder; //Holds strings for counting # of tildes
+    while(getline(fin, stringHolder, '~')) //Finds total of tildes inside file.
+    {
+        tildeCount++;
+    }
+
+    size_t roomCount = tildeCount / 3; //Calculates # of rooms.
+
+    Room *rooms = new Room[roomCount];
+
+    //Following two lines jumps back to beginning of file.
+    fin.clear();
+    fin.seekg(0);
+
+    //Reads in and stores the room's title, description, and exits.
+    for (size_t i = 0; i < roomCount; i++) {
+        //Following four lines read and store the name and description then removes extra whitespaces.
+        getline(fin, rooms[i].name, '~');
+        stripWhitespace(rooms[i].name);
+        getline(fin, rooms[i].description, '~');
+        stripWhitespace(rooms[i].description);
+
+        //Rest of code is for exits.
+        std::string exits; //For reading in the exits.
+        getline(fin, exits, '~');
+        stripWhitespace(exits);
+        std::istringstream sin(exits);
+        char direction; //Direction of the exit.
+        int room_index; //Room the exit leads to.
+        while(sin >> direction >> room_index) //Reads in the direction/index and sets the room exits.
+        {
+            setExit(rooms[i], direction, room_index);
+        }
+
+        sin.clear(); //Clears istringstream for use again.
+    }
+
+    //dumpRooms(rooms, roomCount); //Uncomment for debugging.
+
+    fin.close();
+    return rooms;
+}
+
 
 int main() {
     // size_t sizeOfDungeon = 5;
@@ -23,6 +124,8 @@ int main() {
     Player player;
     Bag bag;
     player.decisions(bag);
+    const Room *rooms;
+    
     // std::cout << player.getAttack() << ' ' << player.getHP() << std::endl;
     //int currentRoom = 0;
     // std::vector<std::vector<Room> > dungeon(sizeOfDungeon, std::vector<Room>(sizeOfDungeon)); //Each position corresponds to a new room.

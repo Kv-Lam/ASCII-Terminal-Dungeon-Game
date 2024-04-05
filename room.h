@@ -9,23 +9,23 @@
 class Enemies; //Forward declaration for compiling.
 
 class Room {
+    friend void setExit(Room &room, const char direction, const int roomIndex);
+    friend int getExit(const Room &room, const char direction);
     public:
         Room();
         ~Room();
         std::string name;
         std::string description;
         std::string ASCIIRoomArt;
-        std::string ASCIIEnemyArt; //MAYBE?
+        std::string ASCIIEnemyArt;
         void printRoomASCII();
         void printEnemyASCII();
     private:
-        int getExit(const Room &room, const char direction);
-        void setExit(Room &room, const char direction, const int roomIndex);
-        void createEnemy(std::string enemyName, int HP, int atk);
-        void deleteEnemy();
-        Enemies *enemy;
+        void createEnemy(std::string enemyName, int HP, int atk); //Ran if there is an enemy inside file for the room.
+        void deleteEnemy(); //Ran when enemy's health == 0.
+        Enemies *enemy; //Will either point to NULL or a created enemy.
         //Following four variables will hold which room the direction leads to.
-        int north; 
+        int north;
         int south;
         int east;
         int west; 
