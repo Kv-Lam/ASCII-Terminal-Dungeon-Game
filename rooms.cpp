@@ -1,33 +1,33 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "room.h"
+#include "rooms.h"
 
-Room::Room() {
+Rooms::Rooms() {
     north = south = east = west = -1;
     enemy = NULL;
 }
 
-Room::~Room() {
+Rooms::~Rooms() {
     delete enemy;
 }
 
-void Room::printRoomASCII() {
-    std::cout << ASCIIRoomArt << std::endl;
+void Rooms::printRoomsASCII() {
+    std::cout << ASCIIRoomsArt << std::endl;
     return;
 }
 
-void Room::printEnemyASCII() {
+void Rooms::printEnemyASCII() {
     std::cout << ASCIIEnemyArt << std::endl;
     return;
 }
 
-void Room::createEnemy(std::string enemyName, int HP, int atk) {
+void Rooms::createEnemy(std::string enemyName, int HP, int atk) {
     enemy = new Enemies(enemyName, HP, atk); //Before calling this, first check if there is an enemy.
     return;
 }
 
-void Room::deleteEnemy() {
+void Rooms::deleteEnemy() {
     delete enemy; //Before calling this, first check if enemy's health is == 0.
     return;
 }

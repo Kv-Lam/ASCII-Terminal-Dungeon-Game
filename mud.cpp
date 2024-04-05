@@ -3,7 +3,7 @@
 #include <cctype>
 #include <fstream>
 #include <sstream>
-#include "room.h"
+#include "rooms.h"
 #include "player.h"
 #include "bag.h"
 // #include "enemies.h"
@@ -15,7 +15,7 @@ enum Directions { //Use these for moving in the vector. USE AS INTEGERS. MAYBE N
     Down = -1,
 };
 
-int getExit(const Room &room, const char direction) {
+int getExit(const Rooms &room, const char direction) {
     switch(direction)
     {
         case 'n':
@@ -30,7 +30,7 @@ int getExit(const Room &room, const char direction) {
     return 0; //Returns 0 to avoid warnings.
 }
 
-void setExit(Room &room, const char direction, const int roomIndex) {
+void setExit(Rooms &room, const char direction, const int roomIndex) {
     switch(direction)
     {
         case 'n':
@@ -59,7 +59,7 @@ void stripWhitespace(std::string &str) {
     return;
 }
 
-const Room *loadRooms(const std::string dungeonFilename) 
+const Rooms *loadRoomss(const std::string dungeonFilename) 
 {
     std::ifstream fin(dungeonFilename);
     //Following if-statement checks for any file opening errors.
@@ -76,7 +76,7 @@ const Room *loadRooms(const std::string dungeonFilename)
     //Calculates # of rooms. CHANGE DENOMINATOR TO HOWEVER MANY ARE NEEDED. I PUT 6, ONE PER READ IN (art counts as 2 because of enemy and room art).
     size_t roomCount = tildeCount / 6;
 
-    Room *rooms = new Room[roomCount];
+    Rooms *rooms = new Rooms[roomCount];
 
     //Following two lines jumps back to beginning of file.
     fin.clear();
@@ -97,12 +97,12 @@ const Room *loadRooms(const std::string dungeonFilename)
         stripWhitespace(exits);
         std::istringstream sin(exits);
         char direction; //Direction of the exit.
-        int room_index; //Room the exit leads to.
+        int room_index; //Rooms the exit leads to.
         while(sin >> direction >> room_index) setExit(rooms[i], direction, room_index); //Reads in the direction/index and sets the room exits.
         sin.clear(); //Clears istringstream for use again.
     }
 
-    //dumpRooms(rooms, roomCount); //Uncomment for debugging.
+    //dumpRoomss(rooms, roomCount); //Uncomment for debugging.
 
     fin.close();
     return rooms;
@@ -115,15 +115,15 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    const Room *rooms = loadRooms(argv[1]); //This also checks for whether the file is openable.
+    const Rooms *rooms = loadRoomss(argv[1]); //This also checks for whether the file is openable.
 
     Player player;
     Bag bag;
     player.decisions(bag);
 
     // std::cout << player.getAttack() << ' ' << player.getHP() << std::endl;
-    //int currentRoom = 0;
-    // std::vector<std::vector<Room> > dungeon(sizeOfDungeon, std::vector<Room>(sizeOfDungeon)); //Each position corresponds to a new room.
+    //int currentRooms = 0;
+    // std::vector<std::vector<Rooms> > dungeon(sizeOfDungeon, std::vector<Rooms>(sizeOfDungeon)); //Each position corresponds to a new room.
     //std::vector<std::vector<std::string> > dungeon(sizeOfDungeon, std::vector<std::string>(sizeOfDungeon, "st")); This is how to make a 2D sized array of strings.
     // for(int i = 0; i < sizeOfDungeon; i++) {
     //     for(int j = 0; j < sizeOfDungeon; j++) {

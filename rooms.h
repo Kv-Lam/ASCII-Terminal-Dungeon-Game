@@ -1,5 +1,5 @@
-#ifndef ROOM_H
-#define ROOM_H
+#ifndef ROOMS_H
+#define ROOMS_H
 
 #include <string>
 #include <vector>
@@ -8,23 +8,23 @@
 
 class Enemies; //Forward declaration for compiling.
 
-class Room {
+class Rooms {
     public:
-        Room();
-        ~Room();
+        Rooms();
+        ~Rooms();
         std::string name;
         std::string description;
-        std::string ASCIIRoomArt;
+        std::string ASCIIRoomsArt;
         std::string ASCIIEnemyArt;
-        void printRoomASCII();
+        void printRoomsASCII();
         void printEnemyASCII();
-        //Following four variables will hold which room the direction leads to.
+        //Following four variables will hold which rooms the direction leads to.
         int north;
         int south;
         int east;
         int west; 
     private:
-        void createEnemy(std::string enemyName, int HP, int atk); //Ran if there is an enemy inside file for the room.
+        void createEnemy(std::string enemyName, int HP, int atk); //Ran if there is an enemy inside file for the rooms.
         void deleteEnemy(); //Ran when enemy's health == 0.
         Enemies *enemy; //Will either point to NULL or a created enemy.
 };
