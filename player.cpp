@@ -33,16 +33,18 @@ const std::string Player::getPlayerName() {
 const void Player::decisions(Bag &inventory) {
     char choice = ' ';
     while(choice != 'Q') {
-        std::cout << "\n\033[4mAvailable Options\033[0m\nM) Move\nB) Bag\nS) Stats\nQ) Quit\nPlease enter your letter choice: ";
+        std::cout << "\n\033[4mAvailable Options\033[0m\nM) Move\nL) Look\nB) Bag\nS) Stats\nQ) Quit\nPlease enter your letter choice: ";
         while(true) {
             std::cin >> choice;
             choice = std::toupper(choice);
-            if(choice == 'M' || choice == 'B' || choice == 'S' || choice == 'Q') break;
-            std::cout << "Invalid choice. Please enter M, B, S, or Q: ";
+            if(choice == 'M' || choice == 'L' || choice == 'B' || choice == 'S' || choice == 'Q') break;
+            std::cout << "Invalid choice. Please enter M, L, B, S, or Q: ";
         }
         switch(choice) {
-            // case 'M': For movement if implemented.
-            //     break;
+            case 'M': //For movement.
+                break;
+            case 'L': //For look.
+                break;
             case 'B':
                 inventory.interactBag(this);
                 break;

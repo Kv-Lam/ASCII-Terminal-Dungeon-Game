@@ -8,15 +8,15 @@ class Enemies {
 friend class Room;
     public:
         Enemies(std::string enemyName, int HP, int atk);
-        const std::string getEnemyName();
         const int getHP();
         const int getMaxHP();
         const int getAttack();
+        const std::string getEnemyName();
     private:
-        std::string enemyName;
         int HP;
         int maxHP;
         int atk;
+        std::string enemyName;
 };
 
 #endif
