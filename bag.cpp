@@ -5,7 +5,7 @@
 Bag::Bag(){}
 
 void Bag::interactBag(Player *player) {
-    const std::string itemNames[3] = {"health potion", "max health potion", "attack potion"};
+    const std::string itemNames[] = {"health potion", "max health potion", "attack potion"};
     std::cout << "\n\033[4m" << player->name << "'s bag\033[0m" << std::endl;
     std::string bagChoice;
     while(true) {
