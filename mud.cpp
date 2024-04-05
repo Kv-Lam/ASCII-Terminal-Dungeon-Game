@@ -109,13 +109,17 @@ const Room *loadRooms(const std::string dungeonFilename)
 }
 
 
-int main() {
-    // size_t sizeOfDungeon = 5;
-    //const Room *rooms;
+int main(int argc, char *argv[]) {
+    if(2 != argc) {
+        std::cerr << "Usage: ./mud fileName" << std::endl;
+        return 1;
+    }
+
+    const Room *rooms = loadRooms(argv[1]); //This also checks for whether the file is openable.
+
     Player player;
     Bag bag;
     player.decisions(bag);
-    const Room *rooms;
 
     // std::cout << player.getAttack() << ' ' << player.getHP() << std::endl;
     //int currentRoom = 0;
