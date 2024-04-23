@@ -27,6 +27,7 @@ void Bag::interactBag(Player *player) {
                     break;
                 }
             }
+            
             if(validItem) break;
             else std::cout << "Invalid item name." << std::endl;
         }
