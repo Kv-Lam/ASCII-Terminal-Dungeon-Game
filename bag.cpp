@@ -5,7 +5,7 @@
 Bag::Bag(){}
 
 void Bag::interactBag(Player *player) {
-    const std::string itemNames[] = {"health potion", "max health potion", "attack potion"};
+    const std::string itemNames[] = {"health potion", "max health potion", "attack potion"}; //Maybe move this to the private data members inside .h.
     std::cout << "\n\033[4m" << player->name << "'s bag\033[0m" << std::endl;
     std::string bagChoice;
     while(true) {
@@ -15,10 +15,20 @@ void Bag::interactBag(Player *player) {
         while(true) {
             std::cout << "Please enter the item (full name) you want to use (enter back if you want to leave inventory): ";
             std::cin >> bagChoice;
-            for(char &c : bagChoice) c = tolower((char) c);
+            bool validItem = false;
+
+            for(char &c : bagChoice) c = tolower(c);
+
             if(bagChoice == "back") return;
-            for(std::string s : itemNames) if(bagChoice == s) break;
-            std::cout << "Invalid item name." << std::endl;
+
+            for(std::string s : itemNames) {
+                if(bagChoice == s) {
+                    validItem = true;
+                    break;
+                }
+            }
+            if(validItem) break;
+            else std::cout << "Invalid item name." << std::endl;
         }
         switch(bagChoice[0]) {
             case 'p': //Potion
