@@ -6,15 +6,17 @@ Bag::Bag(){}
 
 void Bag::interactBag(Player *player) {
     const std::string itemNames[] = {"health potion", "max health potion", "attack potion"}; //Maybe move this to the private data members inside .h.
-    std::cout << "\n\033[4m" << player->name << "'s bag\033[0m" << std::endl;
     std::string bagChoice;
     while(true) {
+        std::cout << "\n\033[4m" << player->name << "'s bag\033[0m" << std::endl;
+        u_short itemNum = 0;
         for(auto it = bag.begin(); it != bag.end(); it++) {
-            std::cout << it->first << " (" << it->second << ')' << std::endl;
+            itemNum++;
+            std::cout << itemNum << ": " << it->first << " (" << it->second << ')' << std::endl;
         }
         while(true) {
             std::cout << "Please enter the item (full name) you want to use (enter back if you want to leave inventory): ";
-            std::cin >> bagChoice;
+            std::getline(std::cin, bagChoice, '\n');
             bool validItem = false;
 
             for(char &c : bagChoice) c = tolower(c);
@@ -31,8 +33,10 @@ void Bag::interactBag(Player *player) {
             if(validItem) break;
             else std::cout << "Invalid item name." << std::endl;
         }
-        switch(bagChoice[0]) {
-            case 'p': //Potion
+
+        if(inBag(bagChoice)) {
+            switch(bagChoice[0]) {
+            case 'p': //Health potion
                 player->currentHP = std::min(player->maxHP, player->currentHP + 3); //Can change how much potions give.
                 removeItem(bagChoice, 1);
                 break;
@@ -45,21 +49,25 @@ void Bag::interactBag(Player *player) {
                 player->atk += 1;
                 removeItem(bagChoice, 1);
                 break;
+            }
         }
-
-        //Print statement printing out what's in your bag along with item information.
-
+        else std::cout << "You do not have any " << bagChoice << "s!" << std::endl;
     }
     return;
 }
 
 void Bag::addItem(std::string itemName, int quantity) {
+    if(!bag.count(itemName)) bag.insert({itemName, 0});
     bag[itemName] += quantity;
     return;
 }
 
 void Bag::removeItem(std::string itemName, int quantity) {
     bag[itemName] -= quantity;
-    //Gotta make a thing to remove the item from inventory entirely if it's == 0.
+    if(!inBag(itemName)) bag.erase(itemName);
     return;
+}
+
+bool Bag::inBag(const std::string itemName) {
+    return bag[itemName];
 }

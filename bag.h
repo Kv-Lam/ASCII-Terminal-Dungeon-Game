@@ -14,6 +14,7 @@ class Bag {
     private:
         void addItem(const std::string itemName, int quantity);
         void removeItem(const std::string itemName, int quantity);
+        bool inBag(const std::string itemName);
         std::unordered_map<std::string, int> bag; //Item name is mapped to quantity.
 };
 
