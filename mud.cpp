@@ -6,29 +6,7 @@
 #include "rooms.h"
 #include "player.h"
 #include "bag.h"
-// #include "enemies.h"
-
-enum Directions { //Use these for moving in the vector. USE AS INTEGERS. MAYBE NOT USING THESE IF NO PRINTING CHARACTER AND MOVEMENT.
-    Left = -1,
-    Right = 1,
-    Up = 1,
-    Down = -1,
-};
-
-int getExit(const Rooms &room, const char direction) {
-    switch(direction)
-    {
-        case 'n':
-            return room.north;
-        case 's':
-            return room.south;
-        case 'e':
-            return room.east;
-        case 'w':
-            return room.west;
-    }
-    return 0; //Returns 0 to avoid warnings.
-}
+#include "enemies.h"
 
 void setExit(Rooms &room, const char direction, const int roomIndex) {
     switch(direction)
@@ -59,7 +37,7 @@ void stripWhitespace(std::string &str) {
     return;
 }
 
-const Rooms *loadRoomss(const std::string dungeonFilename) 
+const Rooms *loadRooms(const std::string dungeonFilename) 
 {
     std::ifstream fin(dungeonFilename);
     //Following if-statement checks for any file opening errors.
@@ -117,12 +95,12 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    const Rooms *rooms = loadRoomss(argv[1]); //This also checks for whether the file is openable.
+    const Rooms *rooms = loadRooms(argv[1]); //This also checks for whether the file is openable.
+    size_t currentRoom = 0;
 
     Player player;
     Bag bag;
-    player.decisions(bag);
-
+    
     // std::cout << player.getAttack() << ' ' << player.getHP() << std::endl;
     //int currentRooms = 0;
     // std::vector<std::vector<Rooms> > dungeon(sizeOfDungeon, std::vector<Rooms>(sizeOfDungeon)); //Each position corresponds to a new room.

@@ -12,16 +12,6 @@ Rooms::~Rooms() {
     delete enemy;
 }
 
-void Rooms::printRoomsASCII() {
-    std::cout << ASCIIRoomsArt << std::endl;
-    return;
-}
-
-void Rooms::printEnemyASCII() {
-    std::cout << ASCIIEnemyArt << std::endl;
-    return;
-}
-
 void Rooms::createEnemy(std::string enemyName, int HP, int atk) {
     if(enemyName == "none") return;
     enemy = new Enemies(enemyName, HP, atk);

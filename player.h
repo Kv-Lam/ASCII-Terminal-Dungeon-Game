@@ -5,7 +5,8 @@
 #include <string>
 #include "bag.h"
 
-class Bag; //Forward declaration of Bag to allow compiling.
+class Bag;
+class Rooms;
 
 class Player {
     friend class Bag;
@@ -15,7 +16,9 @@ class Player {
         const int getCurrentHP();
         const int getMaxHP();
         const std::string getPlayerName();
-        const void decisions(Bag &inventory);
+        const void decisions(Bag &inventory, const Rooms *room, size_t &currentRoom);
+        void Player::look(const Rooms &room);
+        void Player::move(const Rooms *room, size_t &currentRoom);
     private:
         int maxHP;
         int currentHP;
