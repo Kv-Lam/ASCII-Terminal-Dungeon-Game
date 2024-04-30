@@ -96,11 +96,11 @@ int main(int argc, char *argv[]) {
     }
 
     const Rooms *rooms = loadRooms(argv[1]); //This also checks for whether the file is openable.
-    size_t currentRoom = 0;
 
     Player player;
     Bag bag;
-    
+    player.decisions(bag, rooms);
+
     // std::cout << player.getAttack() << ' ' << player.getHP() << std::endl;
     //int currentRooms = 0;
     // std::vector<std::vector<Rooms> > dungeon(sizeOfDungeon, std::vector<Rooms>(sizeOfDungeon)); //Each position corresponds to a new room.

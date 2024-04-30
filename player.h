@@ -16,7 +16,7 @@ class Player {
         const int getCurrentHP();
         const int getMaxHP();
         const std::string getPlayerName();
-        const void decisions(Bag &inventory, const Rooms *room, size_t &currentRoom);
+        const void decisions(Bag &inventory, const Rooms *room);
         void Player::look(const Rooms &room);
         void Player::move(const Rooms *room, size_t &currentRoom);
     private:

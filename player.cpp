@@ -92,8 +92,9 @@ void Player::move(const Rooms *room, size_t &currentRoom) {
     }
 }
 
-const void Player::decisions(Bag &inventory, const Rooms *room, size_t &currentRoom) {
+const void Player::decisions(Bag &inventory, const Rooms *room) {
     char choice = ' ';
+    size_t currentRoom = 0;
     while(choice != 'Q') {
         std::cout << "\n\033[4mAvailable Options\033[0m\nM) Move\nL) Look\nB) Bag\nR) Room Art\nE) Enemy Art\nS) Stats\nQ) Quit\nPlease enter your letter choice: ";
         while(true) {
