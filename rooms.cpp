@@ -23,11 +23,12 @@ void Rooms::printEnemyASCII() {
 }
 
 void Rooms::createEnemy(std::string enemyName, int HP, int atk) {
-    enemy = new Enemies(enemyName, HP, atk); //Before calling this, first check if there is an enemy.
+    if(enemyName == "none") return;
+    enemy = new Enemies(enemyName, HP, atk);
     return;
 }
 
 void Rooms::deleteEnemy() {
-    delete enemy; //Before calling this, first check if enemy's health is == 0.
+    if(!enemy->getHP()) delete enemy; //Deletes enemy if the health of it is == 0.
     return;
 }
