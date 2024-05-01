@@ -40,6 +40,7 @@ Player::Player() {
         getline(std::cin, name, '\n');
         std::cout << "Are you sure you want " << name << " to be your name (y or n)? ";
         std::cin >> confirmation;
+        std::cin.get(); //Gets rid of newline at the end of confirmation.
     } while(toupper(confirmation) != 'Y');
     atk = 5; //Starting atk = 5;
     maxHP = currentHP = 10; //Starting HP = 10
@@ -107,11 +108,16 @@ const void Player::decisions(Bag &inventory, const Rooms *room) {
         switch(choice) {
             case 'M': //For movement. TODO: NEED TO MAKE IT TO WHERE THE ROOM OBJECT DOES CHANGE.
                 move(room, currentRoom);
+                // if(room[currentRoom].enemy != NULL) {
+                    // if(!combat()) if enemy is not killed (combat returns true if killed) force player to move. 1 hp if you fail running. srand(time) % 10. If < 4, fail running.
+                    //If enemy is not killed, force player to move. Boss room (vector size - 2) should not allow running.
+                // }
                 break;
             case 'L': //For look.
-                look(room[currentRoom]);
+                look(room[currentRoom]); //MOVE ROOM ART HERE.
                 break;
             case 'B': //Bag.
+                std::cin.get();
                 inventory.interactBag(this);
                 break;
             case 'S': //Stats.
@@ -122,7 +128,7 @@ const void Player::decisions(Bag &inventory, const Rooms *room) {
             case 'R': //Print room art.
                 std::cout << room[currentRoom].ASCIIRoomsArt << std::endl; //Will this need an endl?
                 break;
-            case 'E': //Print enemy art.
+            case 'E': //MOVE THIS TO COMBAT.
                 if(room[currentRoom].enemy != NULL) std::cout << room[currentRoom].ASCIIEnemyArt << std::endl;
                 else std::cout << "There is no enemy in this room!" << std::endl;
                 break;

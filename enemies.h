@@ -7,16 +7,18 @@
 class Enemies {
 friend class Room;
     public:
-        Enemies(std::string enemyName, int HP, int atk);
+        Enemies(std::string enemyName, std::string enemyDialogue, int HP, int atk);
         const int getHP();
         const int getMaxHP();
         const int getAttack();
         const std::string getEnemyName();
+        const std::string getEnemyDialogue();
     private:
         int HP;
         int maxHP;
         int atk;
         std::string enemyName;
+        std::string enemyDialogue;
 };
 
 #endif

@@ -1,7 +1,8 @@
 #include "enemies.h"
 
-Enemies::Enemies(std::string enemyName, int HP, int atk) {
+Enemies::Enemies(std::string enemyName, std::string enemyDialogue, int HP, int atk) {
     this->enemyName = enemyName;
+    this->enemyDialogue = enemyDialogue;
     this->HP = HP;
     this->atk = atk;
 }

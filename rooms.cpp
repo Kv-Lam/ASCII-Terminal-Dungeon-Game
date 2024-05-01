@@ -12,9 +12,9 @@ Rooms::~Rooms() {
     delete enemy;
 }
 
-void Rooms::createEnemy(std::string enemyName, int HP, int atk) {
+void Rooms::createEnemy(std::string enemyName, std::string enemyDialogue, int HP, int atk) {
     if(enemyName == "none") return;
-    enemy = new Enemies(enemyName, HP, atk);
+    enemy = new Enemies(enemyName, enemyDialogue, HP, atk);
     return;
 }
 

@@ -24,7 +24,7 @@ class Rooms {
         std::string ASCIIRoomsArt;
         std::string ASCIIEnemyArt;
     private:
-        void createEnemy(std::string enemyName, int HP, int atk); //Ran if there is an enemy inside file for the rooms.
+        void createEnemy(std::string enemyName, std::string enemyDialogue, int HP, int atk); //Ran if there is an enemy inside file for the rooms.
         void deleteEnemy(); //Ran when enemy's health == 0.
         Enemies *enemy; //Will either point to NULL or a created enemy.
 };
