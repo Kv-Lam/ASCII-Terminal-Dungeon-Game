@@ -34,13 +34,13 @@ int getExit(const Rooms &room, const char direction) {
 }
 
 Player::Player() {
-    char confirmation = ' ';
-    while(toupper(confirmation) != 'Y') {
+    char confirmation;
+    do {
         std::cout << "Please enter your character's name: ";
-        getline(std::cin, this->name, '\n');
-        std::cout << "Are you sure you want " << this->name << " to be your name (y or n)? ";
+        getline(std::cin, name, '\n');
+        std::cout << "Are you sure you want " << name << " to be your name (y or n)? ";
         std::cin >> confirmation;
-    }
+    } while(toupper(confirmation) != 'Y');
     atk = 5; //Starting atk = 5;
     maxHP = currentHP = 10; //Starting HP = 10
 }
