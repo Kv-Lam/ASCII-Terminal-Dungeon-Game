@@ -61,16 +61,17 @@ const std::string Player::getPlayerName() {
     return name;
 }
 
-void Player::look(const Rooms &room) {
+void look(const Rooms &room) {
     std::cout << '\n' << room.name << '\n' << room.description << '\n' << "\nExits:";
     if(-1 < room.north) std::cout << " n";
     if(-1 < room.south) std::cout << " s";
     if(-1 < room.east) std::cout << " e";
     if(-1 < room.west) std::cout << " w";
     std::cout << std::endl;
+    return;
 }
 
-void Player::move(const Rooms *room, size_t &currentRoom) {
+void move(const Rooms *room, size_t &currentRoom) {
     char exitChoice;
     while(true) {
         std::cout << "Which exit would you like to take?" << std::endl;
