@@ -74,7 +74,7 @@ void look(const Rooms &room) {
 void move(const Rooms *room, size_t &currentRoom) {
     char exitChoice;
     while(true) {
-        std::cout << "Which exit would you like to take?" << std::endl;
+        std::cout << "Which exit would you like to take? ";
         std::cin >> exitChoice;
         switch(exitChoice) {
             case 'n': case 's' : case 'e' : case 'w':
@@ -83,7 +83,7 @@ void move(const Rooms *room, size_t &currentRoom) {
                     break;
                 }
                 //Following code is for a valid direction input.
-                std::cout << "You moved " << getDirectionName(exitChoice) << '.' << std::endl;
+                std::cout << "\nYou moved " << getDirectionName(exitChoice) << '.' << std::endl;
                 currentRoom = getExit(room[currentRoom], exitChoice); 
                 return;
             default:
@@ -125,8 +125,10 @@ const void Player::decisions(Bag &inventory, const Rooms *room) {
             case 'E': //Print enemy art.
                 if(room[currentRoom].enemy != NULL) std::cout << room[currentRoom].ASCIIEnemyArt << std::endl;
                 else std::cout << "There is no enemy in this room!" << std::endl;
+                break;
             case 'Q': //Quit game.
                 std::cout << "Thank you for playing, " << name << '!' << std::endl;
+                //NEED TO DELETE ALL POINTERS AFTER THIS. OR IN MAIN.
                 return;
         }
     }
