@@ -1,0 +1,219 @@
+Entrance (Room #0)
+~
+Your journey begins. . .
+The air is damp and a foul stench emminates from behind the door. 
+~
+s 5
+~
+      | \        |    _----_    |        /  |            
+      |  \       |.;`''''''''`;.|       /   |            
+  ._  |   \    .` ______________ `.    /    | _.          
+    |'-,   \ ,'                    ', /   ,-' |        
+    |    '-,;`_______________________`;,-'    |            
+    |       '|   |   |   |   |   |   |'       |            
+    |        |   |   |   |   |   |   |        |           
+..__|        |   |   |   |   |   |   |        |__..           
+    ``|**--..|   |   |   |   |   _   |..--**|``                  
+      |      |   |   |   |   |,'---',|      |            
+      |      |   |   |   |   | '._.' |      |           
+      |      |   |   |   |   |   |   |      |           
+````|````````|   |   |   |   |   |   |````````|```````                 
+    |        |___|___|___|___|___|___|        |         
+    |        | ::                 :: |        |         
+    |       _|_______________________|_       |          
+    |  ,-'  /|_______________________|\  `-,  |           
+  ,-'      /|_________________________|\      `-.          
+         _.'___________________________`._             
+     _.'___________________________________'._ 
+
+~
+none
+~
+0, 0, 0
+~
+[Enemy Art]
+~
+Dead End (Room #1)
+~
+A few barrels are strewn across the floor, some leaking a clearly expired liquid.
+~
+s 6
+~
+Room #2
+~
+There seem to be some animal droppings in the corner. Gross.
+~
+e 3
+~
+Room #3
+~
+A dirty hall with cockroaches crawling around. Is this a student apartment complex?
+~
+w 2
+e 4
+~
+Room #4
+~
+A small set of rusted metal bars line a small opening in the stone. Light pierces the darkness.
+Freedom so close, yet so far.
+~
+w 3
+s 9
+~
+Main Hall (Room #5)
+~
+The door opens to a large Hall decorated with mold and sparsely placed torches.
+~
+e 6
+n 0
+~
+A Hole In The Wall (Room #6)
+~
+There's a giant crack in the wall big enough to fit a person of about your size, lucky you.
+There are multiple passageways through the hole.
+~
+s 11
+w 5
+e 7
+n 1
+~
+Hallway (Room #7)
+~
+You hear a faint buzzing noise in the distance.
+And now it's gone, weird.
+~
+e 8
+w 6
+~
+Hallway (Room #8)
+~
+Have I been here before? No, of course I haven't, right??
+~
+e 9
+w 7
+~
+Cobblestone Room (Room #9)
+~
+Nothing remarkable, just more moldy, cracked cobblestone walls.
+~
+w 8
+n 4
+~
+Room #10
+~
+There's a mural of WWII propaganda on the wall.
+~
+s 15
+~
+Bedroom (Room #11)
+~
+You climb through one of the holes, a little tight of a fit for your tastes, but you're inside now.
+The room opens up to a small living quarters, quite out of place for a dungeon.
+~
+n 6
+e 12
+~
+The Intersection (Room #12)
+~
+A hallway stands before you forking in three directions.
+You feel as though there is a presence other than your own nearby.
+~
+s 17
+w 11
+e 13
+~
+Dungeon Left Wing (Room #13)
+~
+There's some dingy jail cells dotting the walls, it seems as though some have passages behind the bars.
+~
+e 14
+s 18
+w 12
+~
+Cobble Stone Room (Room #14)
+~
+There's a loose panel on the ceiling but you can't quite reach it.
+A tantalizing prospect, but sadly you don't happen to have a ladder.
+~
+w 13
+s 19
+~
+Room #15
+~
+Sitting on a desk is a bowl of soup and some tea
+~
+e 16
+n 10
+~
+Room #16
+~
+There's a collection of decaying wooden signs. One reads, "No Trespassing". . . It's a little late now.
+~
+w 15
+e 17
+~
+Dungeon Right Wing (Room #17)
+~
+Someone has been here before you. There are footprints and signs of a struggle.
+Blood splatters are visible on the floors and walls.
+~
+n 12
+w 16
+s 22
+~
+Cell Block B (Room #18)
+~
+Multiple cells line the walls, many are locked or jammed.
+The rusting cell bars look like they could give way with the slightest force.
+~
+s 23
+n 13
+~
+The Void (Room #19)
+~
+The doorway behind you collapses suddenly.
+In front of the floor and walls give way to an inky black hole.
+Your only way out is to jump. . .
+~
+n 14
+~
+Room #20
+~
+There's a pile of old newspapers in the corner.
+~
+e 21
+~
+Room #21
+~
+You get the feeling you're closer to the exit now.
+~
+e 22
+w 20
+~
+Room #22
+~
+There's a wooden chair leaned against the wall.
+~
+w 21
+n 17
+~
+Crossroads (Room #23)
+~
+There's a bright orange light accompanied by a warm draft coming from the East.
+~
+n 18
+e 24
+~
+The Throne Room (Room #24)
+~
+Finally freedom! Oh wait. . . 
+Your eyes begin to adjust to the bright light revealing a room with a broken floor, lava seeping from the cracks.
+A tall, slender skeletal figure sits before you adorning a golden, bejeweled crown. His presence makes you uneasy.
+~
+n 25
+~
+The Forest (Room #25)
+~
+You rush out of the lava filled chamber, the exit collapsing behind you.
+The smell of pine is heavy around you, rain falls gently on your head.
+Freedom. . . ?
