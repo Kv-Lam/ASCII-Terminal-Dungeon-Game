@@ -25,11 +25,10 @@ s 5
   ,-'      /|_________________________|\      `-.          
          _.'___________________________'._             
      _.'___________________________________'._ 
-l
 ~
-none
+ 
 ~
-0, 0, 0
+0 0 0
 ~
 [Enemy Art]
 ~
@@ -39,20 +38,44 @@ A few barrels are strewn across the floor, some leaking a clearly expired liquid
 ~
 s 6
 ~
-Room #2
+[Room Art]
 ~
-There seem to be some animal droppings in the corner. Gross.
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
+~
+Dead End (Room #2)
+~
+Another dead end, great. . . Just great.
 ~
 e 3
 ~
-Room #3
+[Room Art]
 ~
-A dirty hall with cockroaches crawling around. Is this a student apartment complex?
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
+~
+Hallway (Room #3)
+~
+A dirty hall with cockroaches crawling around. Much to your dismay, one audibly crunches beneath your feet.
 ~
 w 2
 e 4
 ~
-Room #4
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
+~
+A Glimps of Normalcy (Room #4)
 ~
 A small set of rusted metal bars line a small opening in the stone. Light pierces the darkness.
 Freedom so close, yet so far.
@@ -60,12 +83,28 @@ Freedom so close, yet so far.
 w 3
 s 9
 ~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
+~
 Main Hall (Room #5)
 ~
-The door opens to a large Hall decorated with mold and sparsely placed torches.
+The door opens to a long Hall decorated with mold and sparsely placed torches.
 ~
 e 6
 n 0
+~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
 ~
 A Hole In The Wall (Room #6)
 ~
@@ -77,6 +116,14 @@ w 5
 e 7
 n 1
 ~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
+~
 Hallway (Room #7)
 ~
 You hear a faint buzzing noise in the distance.
@@ -85,12 +132,28 @@ And now it's gone, weird.
 e 8
 w 6
 ~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
+~
 Hallway (Room #8)
 ~
 Have I been here before? No, of course I haven't, right??
 ~
 e 9
 w 7
+~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
 ~
 Cobblestone Room (Room #9)
 ~
@@ -99,11 +162,27 @@ Nothing remarkable, just more moldy, cracked cobblestone walls.
 w 8
 n 4
 ~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
+~
 Room #10
 ~
 There's a mural of WWII propaganda on the wall.
 ~
 s 15
+~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
 ~
 Bedroom (Room #11)
 ~
@@ -112,6 +191,14 @@ The room opens up to a small living quarters, quite out of place for a dungeon.
 ~
 n 6
 e 12
+~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
 ~
 The Intersection (Room #12)
 ~
@@ -122,6 +209,14 @@ s 17
 w 11
 e 13
 ~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
+~
 Dungeon Left Wing (Room #13)
 ~
 There's some dingy jail cells dotting the walls, it seems as though some have passages behind the bars.
@@ -129,6 +224,14 @@ There's some dingy jail cells dotting the walls, it seems as though some have pa
 e 14
 s 18
 w 12
+~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
 ~
 Cobble Stone Room (Room #14)
 ~
@@ -138,6 +241,14 @@ A tantalizing prospect, but sadly you don't happen to have a ladder.
 w 13
 s 19
 ~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
+~
 Room #15
 ~
 Sitting on a desk is a bowl of soup and some tea
@@ -145,12 +256,28 @@ Sitting on a desk is a bowl of soup and some tea
 e 16
 n 10
 ~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
+~
 Room #16
 ~
 There's a collection of decaying wooden signs. One reads, "No Trespassing". . . It's a little late now.
 ~
 w 15
 e 17
+~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
 ~
 Dungeon Right Wing (Room #17)
 ~
@@ -161,27 +288,59 @@ n 12
 w 16
 s 22
 ~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
+~
 Cell Block B (Room #18)
 ~
 Multiple cells line the walls, many are locked or jammed.
-The rusting cell bars look like they could give way with the slightest force.
+The rusting cell bars look like they could give way with the slightest breeze.
 ~
 s 23
 n 13
 ~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
+~
 The Void (Room #19)
 ~
 The doorway behind you collapses suddenly.
-In front of the floor and walls give way to an inky black hole.
+In front of you the floor and walls give way to an inky black hole.
 Your only way out is to jump. . .
 ~
 n 14
+~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
 ~
 Room #20
 ~
 There's a pile of old newspapers in the corner.
 ~
 e 21
+~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
 ~
 Room #21
 ~
@@ -190,12 +349,28 @@ You get the feeling you're closer to the exit now.
 e 22
 w 20
 ~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
+~
 Room #22
 ~
 There's a wooden chair leaned against the wall.
 ~
 w 21
 n 17
+~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
 ~
 Crossroads (Room #23)
 ~
@@ -204,6 +379,14 @@ There's a bright orange light accompanied by a warm draft coming from the East.
 n 18
 e 24
 ~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
+~
 The Throne Room (Room #24)
 ~
 Finally freedom! Oh wait. . . 
@@ -211,6 +394,14 @@ Your eyes begin to adjust to the bright light revealing a room with a broken flo
 A tall, slender skeletal figure sits before you adorning a golden, bejeweled crown. His presence makes you uneasy.
 ~
 n 25
+~
+[Room Art]
+~
+[Enemy Name]
+~
+0 0 0
+~
+[Enemy Art]
 ~
 The Forest (Room #25)
 ~
