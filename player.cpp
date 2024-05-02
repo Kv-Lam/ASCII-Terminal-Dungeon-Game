@@ -141,7 +141,7 @@ bool Player::combat(const Rooms &room, Bag &inventory) {
                             std::cout << "You failed to run away and took 1 damage as a result!" << std::endl;
                         }
                         else {
-                            std::cout << "You turned tail and successfully fleed from the battle!" << std::endl;
+                            std::cout << "You turned tail and successfully fled from the battle!" << std::endl;
                             return false;
                         }
                         break;
