@@ -1,6 +1,7 @@
 #include "player.h"
 #include "rooms.h"
-#
+#include <ctime>
+#include <cstdlib>
 #include <iostream>
 #include <cctype>
 
