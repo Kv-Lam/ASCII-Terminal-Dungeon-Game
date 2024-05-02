@@ -77,9 +77,9 @@ Rooms *loadRooms(const std::string dungeonFilename)
         char direction; //Direction of the exit.
         int room_index; //Rooms the exit leads to.
         while(sin >> direction >> room_index) setExit(rooms[i], direction, room_index); //Reads in the direction/index and sets the room exits.
-
-        // getline(fin, rooms[i].ASCIIRoomsArt, '~'); How to read in the art.
+        getline(fin, rooms[i].ASCIIRoomArt, '~');
         sin.clear(); //Clears istringstream for use again.
+
     }
 
     //dumpRoomss(rooms, roomCount); //Uncomment for debugging.

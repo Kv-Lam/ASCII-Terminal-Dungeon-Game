@@ -65,12 +65,14 @@ const std::string Player::getPlayerName() {
 }
 
 void look(const Rooms &room) {
-    std::cout << '\n' << room.name << '\n' << room.description << '\n' << "\nExits:";
+    std::cout << '\n' << room.name << '\n' << room.description << '\n';
+    std::cout << '\n' << room.ASCIIRoomArt << std::endl;
+    std::cout << "\nExits:";
     if(-1 < room.north) std::cout << " n";
     if(-1 < room.south) std::cout << " s";
     if(-1 < room.east) std::cout << " e";
     if(-1 < room.west) std::cout << " w";
-    std::cout << '\n' << room.ASCIIRoomArt << std::endl;
+    std::cout << std::endl;
     return;
 }
 
