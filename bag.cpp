@@ -70,5 +70,6 @@ void Bag::removeItem(std::string itemName, int quantity) {
 }
 
 bool Bag::inBag(const std::string itemName) {
-    return bag[itemName];
+    if(bag.find(itemName) == bag.end()) return false;
+    else return true;
 }

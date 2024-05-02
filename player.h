@@ -16,9 +16,9 @@ class Player {
         const int getCurrentHP();
         const int getMaxHP();
         const std::string getPlayerName();
-        const void decisions(Bag &inventory, const Rooms *room);
+        const void decisions(Bag &inventory, Rooms *room);
         void displayStats();
-        bool combat(const Rooms &room, Bag &inventory);
+        bool combat(Rooms &room, Bag &inventory);
     private:
         int maxHP;
         int currentHP;

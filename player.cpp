@@ -103,7 +103,7 @@ void Player::displayStats() {
     return;
 }
 
-bool Player::combat(const Rooms &room, Bag &inventory) {
+bool Player::combat(Rooms &room, Bag &inventory) {
     std::cout << name << " has encountered " << room.enemy->enemyName << '!' << std::endl;
     if(!room.enemy->enemyDialogue.empty()) std::cout << room.enemy->enemyName << ": " << room.enemy->getEnemyDialogue() << std::endl;
     char choice;
@@ -129,6 +129,7 @@ bool Player::combat(const Rooms &room, Bag &inventory) {
                         if(room.enemy->getHP() <= 0) {
                             int itemReceivedIndex = rand() % 3;
                             std::cout << name << " has killed the " << room.enemy->getEnemyName() << " and received a/an " << itemNames[itemReceivedIndex] << "!";
+                            room.deleteEnemy();
                             inventory.addItem(itemNames[itemReceivedIndex], 1);
                             return true;
                         }
@@ -165,10 +166,10 @@ bool Player::combat(const Rooms &room, Bag &inventory) {
     return false;
 }
 
-const void Player::decisions(Bag &inventory, const Rooms *room) {
+const void Player::decisions(Bag &inventory, Rooms *room) {
     char choice = ' ';
     size_t currentRoom = 0;
-    while(choice != 'Q') {
+    do {
         std::cout << "\n\033[4mAvailable Options\033[0m\nM) Move\nL) Look\nB) Bag\nR) Room Art\nE) Enemy Art\nS) Stats\nQ) Quit\nPlease enter your letter choice: ";
         while(true) {
             std::cin >> choice;
@@ -196,7 +197,7 @@ const void Player::decisions(Bag &inventory, const Rooms *room) {
                 }
                 break;
             case 'L': //For look.
-                look(room[currentRoom]); //TODO: MOVE ROOM ART HERE.
+                look(room[currentRoom]);
                 break;
             case 'B': //Bag.
                 inventory.interactBag(this);
@@ -209,6 +210,6 @@ const void Player::decisions(Bag &inventory, const Rooms *room) {
                 //NEED TO DELETE ALL POINTERS AFTER THIS. OR IN MAIN.
                 return;
         }
-    }
+    } while(choice != 'Q');
         return;
 }
