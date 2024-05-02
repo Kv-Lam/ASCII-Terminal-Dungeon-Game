@@ -170,7 +170,7 @@ const void Player::decisions(Bag &inventory, Rooms *room) {
     char choice = ' ';
     size_t currentRoom = 0;
     do {
-        std::cout << "\n\033[4mAvailable Options\033[0m\nM) Move\nL) Look\nB) Bag\nR) Room Art\nE) Enemy Art\nS) Stats\nQ) Quit\nPlease enter your letter choice: ";
+        std::cout << "\n\033[4mAvailable Options\033[0m\nM) Move\nL) Look\nB) Bag\nS) Stats\nQ) Quit\nPlease enter your letter choice: ";
         while(true) {
             std::cin >> choice;
             choice = std::toupper(choice);
