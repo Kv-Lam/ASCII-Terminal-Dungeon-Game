@@ -37,7 +37,7 @@ void stripWhitespace(std::string &str) {
     return;
 }
 
-const Rooms *loadRooms(const std::string dungeonFilename) 
+Rooms *loadRooms(const std::string dungeonFilename) 
 {
     std::ifstream fin(dungeonFilename);
     //Following if-statement checks for any file opening errors.
@@ -95,7 +95,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    const Rooms *rooms = loadRooms(argv[1]); //This also checks for whether the file is openable.
+    Rooms *rooms = loadRooms(argv[1]); //This also checks for whether the file is openable.
 
     Player player;
     Bag bag;

@@ -207,9 +207,9 @@ const void Player::decisions(Bag &inventory, Rooms *room) {
                 break;
             case 'Q': //Quit game.
                 std::cout << "Thank you for playing, " << name << '!' << std::endl;
-                //NEED TO DELETE ALL POINTERS AFTER THIS. OR IN MAIN.
+                //NEED TO DELETE ALL ALLOCATED STUFF IN MAIN.
                 return;
         }
     } while(choice != 'Q');
-        return;
+    return;
 }
