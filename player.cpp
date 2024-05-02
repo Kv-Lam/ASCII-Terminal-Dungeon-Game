@@ -1,5 +1,6 @@
 #include "player.h"
 #include "rooms.h"
+#
 #include <iostream>
 #include <cctype>
 
@@ -68,7 +69,7 @@ void look(const Rooms &room) {
     if(-1 < room.south) std::cout << " s";
     if(-1 < room.east) std::cout << " e";
     if(-1 < room.west) std::cout << " w";
-    std::cout << std::endl;
+    std::cout << '\n' << room.ASCIIRoomArt << std::endl;
     return;
 }
 
@@ -94,6 +95,75 @@ void move(const Rooms *room, size_t &currentRoom) {
     }
 }
 
+void Player::displayStats() {
+    std::cout << "\n\033[4m" << name << "'s stats\033[0m" << std::endl; //Underlined playerName's stats.
+    std::cout << "HP: " << currentHP << '/' << maxHP << std::endl;
+    std::cout << "ATK: " << atk << std::endl;
+    return;
+}
+
+bool Player::combat(const Rooms &room, Bag &inventory) {
+    std::cout << name << " has encountered " << room.enemy->enemyName << '!' << std::endl;
+    if(!room.enemy->enemyDialogue.empty()) std::cout << room.enemy->enemyName << ": " << room.enemy->getEnemyDialogue() << std::endl;
+    char choice;
+    int turn = 0;
+    const std::string itemNames[] = {"health potion", "max health potion", "attack potion"};
+    srand(time(NULL));
+    while(true) {
+        switch(turn % 2) {
+            case 0: //Player's turn.
+                displayStats();
+                room.enemy->displayEnemyStats();
+                while(true) {
+                    std::cout << "\n\033[4mPlease select your move\033[0m\nA) Attack\nI) Inventory\nR) Run\nE) Enemy Art\nPlease enter your letter choice: ";
+                    std::cin >> choice;
+                    if(choice != 'A'|| choice != 'I' || choice != 'R' || choice != 'E') std::cout << "Invalid choice!" << std::endl;
+                    else break;
+                }
+                switch(toupper(choice)) {
+                    case 'A': //Attack.
+                        std::cout << name << " attacked the " << room.enemy->getEnemyName() << " for " << getAttack() << " damage!" << std::endl;
+                        room.enemy->HP -= getAttack();
+                        std::cout << room.enemy->getEnemyName() << "'s HP: " << room.enemy->getHP();
+                        if(room.enemy->getHP() <= 0) {
+                            int itemReceivedIndex = rand() % 3;
+                            std::cout << name << " has killed the " << room.enemy->getEnemyName() << " and received a/an " << itemNames[itemReceivedIndex] << "!";
+                            inventory.addItem(itemNames[itemReceivedIndex], 1);
+                            return true;
+                        }
+                        break;
+                    case 'I': //Inventory.
+                        inventory.interactBag(this);
+                        break;
+                    case 'R': //Run.
+                        if(rand() % 10 < 2) { //20% chance to fail running.
+                            currentHP--;
+                            std::cout << "You failed to run away and took 1 damage as a result!" << std::endl;
+                        }
+                        else {
+                            std::cout << "You turned tail and successfully fleed from the battle!" << std::endl;
+                            return false;
+                        }
+                        break;
+                    case 'E':
+                        std::cout << room.enemy->getASCIIEnemyArt() << std::endl;
+                        break;
+                }
+                break;
+            case 1: //Enemy's turn.
+                std::cout << room.enemy->getEnemyName() << " attacked " << name << " for " << room.enemy->getAttack() << "!";
+                if((currentHP -= room.enemy->getAttack()) <= 0) { //TODO: Check if player died inside of decisions().
+                    std::cout << name << " has been slain! Game over." << std::endl;
+                    return false;
+                }
+                break;
+        }
+        
+        turn++;
+    }
+    return false;
+}
+
 const void Player::decisions(Bag &inventory, const Rooms *room) {
     char choice = ' ';
     size_t currentRoom = 0;
@@ -102,35 +172,36 @@ const void Player::decisions(Bag &inventory, const Rooms *room) {
         while(true) {
             std::cin >> choice;
             choice = std::toupper(choice);
-            if(choice == 'M' || choice == 'L' || choice == 'B' || choice == 'S' || choice == 'R' || choice == 'E' || choice == 'Q') break;
-            std::cout << "Invalid choice. Please enter M, L, B, S, R, E, or Q: ";
+            if(choice == 'M' || choice == 'L' || choice == 'B' || choice == 'S' || choice == 'Q') break;
+            std::cout << "Invalid choice. Please enter M, L, B, S, or Q: ";
         }
         switch(choice) {
-            case 'M': //For movement. TODO: NEED TO MAKE IT TO WHERE THE ROOM OBJECT DOES CHANGE.
-                move(room, currentRoom);
-                // if(room[currentRoom].enemy != NULL) {
-                    // if(!combat()) if enemy is not killed (combat returns true if killed) force player to move. 1 hp if you fail running. srand(time) % 10. If < 4, fail running.
-                    //If enemy is not killed, force player to move. Boss room (vector size - 2) should not allow running.
-                // }
+            case 'M': //For movement and combat.
+                while(true) {
+                    if(currentHP <= 0) {
+                        std::cout << name << " has died! Game over." << std::endl;
+                        return;
+                    }
+                    move(room, currentRoom);
+                    if(room[currentRoom].enemy != NULL) { //There is an enemy.
+                        //if enemy is not killed (combat returns true if killed) force player to move. 1 hp if you fail running. srand(time) % 10. If < 4, fail running.
+                        //If enemy is not killed, force player to move. Boss room (vector size - 2) should not allow running.
+
+                        //Player killed enemy. If player ran, will force player to keep moving until they go to a room without a monster
+                        //or a room where they've already killed the monster. If they died, will end the game from first if-statement.
+                        if(this->combat(room[currentRoom], inventory)) break;
+                    }
+                    else break; //There's no enemy.
+                }
                 break;
             case 'L': //For look.
-                look(room[currentRoom]); //MOVE ROOM ART HERE.
+                look(room[currentRoom]); //TODO: MOVE ROOM ART HERE.
                 break;
             case 'B': //Bag.
-                std::cin.get();
                 inventory.interactBag(this);
                 break;
             case 'S': //Stats.
-                std::cout << "\n\033[4m" << name << "'s stats\033[0m" << std::endl; //Underlined playerName's stats.
-                std::cout << "HP: " << currentHP << '/' << maxHP << std::endl;
-                std::cout << "ATK: " << atk << std::endl;
-                break;
-            case 'R': //Print room art.
-                std::cout << room[currentRoom].ASCIIRoomsArt << std::endl; //Will this need an endl?
-                break;
-            case 'E': //MOVE THIS TO COMBAT.
-                if(room[currentRoom].enemy != NULL) std::cout << room[currentRoom].ASCIIEnemyArt << std::endl;
-                else std::cout << "There is no enemy in this room!" << std::endl;
+                displayStats();
                 break;
             case 'Q': //Quit game.
                 std::cout << "Thank you for playing, " << name << '!' << std::endl;

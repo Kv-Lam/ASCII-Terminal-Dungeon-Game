@@ -6,19 +6,24 @@
 Rooms::Rooms() {
     north = south = east = west = -1;
     enemy = NULL;
+    ASCIIRoomArt = "";
 }
 
 Rooms::~Rooms() {
     delete enemy;
 }
 
-void Rooms::createEnemy(std::string enemyName, std::string enemyDialogue, int HP, int atk) {
-    if(enemyName == "none") return;
-    enemy = new Enemies(enemyName, enemyDialogue, HP, atk);
+const std::string Rooms::getASCIIRoomArt() {
+    return ASCIIRoomArt;
+}
+
+void Rooms::createEnemy(std::string enemyName, std::string enemyDialogue, std::string ASCIIEnemyArt, int HP, int atk) {
+    if(enemyName.empty()) return;
+    enemy = new Enemies(enemyName, enemyDialogue, ASCIIEnemyArt,HP, atk);
     return;
 }
 
 void Rooms::deleteEnemy() {
-    if(!enemy->getHP()) delete enemy; //Deletes enemy if the health of it is == 0.
+    delete enemy; //Deletes enemy if the health of it is == 0.
     return;
 }

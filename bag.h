@@ -8,6 +8,7 @@
 class Player; //Forward declaring player class to allow for compiling.
 
 class Bag {
+    friend class Player;
     public:
         Bag();
         void interactBag(Player *player);

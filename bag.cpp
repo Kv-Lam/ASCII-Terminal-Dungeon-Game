@@ -4,7 +4,7 @@
 
 Bag::Bag(){}
 
-void Bag::interactBag(Player *player) {
+void Bag::interactBag(Player *player) { //TODO: FIX ACTUALLY USING THE ITEMS.
     const std::string itemNames[] = {"health potion", "max health potion", "attack potion"}; //Maybe move this to the private data members inside .h.
     std::string bagChoice;
     while(true) {
@@ -15,6 +15,7 @@ void Bag::interactBag(Player *player) {
             std::cout << itemNum << ": " << it->first << " (" << it->second << ')' << std::endl;
         }
         while(true) {
+            std::cin.get();
             std::cout << "\nPlease enter the item (full name) you want to use (enter back if you want to leave inventory): ";
             std::getline(std::cin, bagChoice, '\n');
             bool validItem = false;
