@@ -15,7 +15,6 @@ void Bag::interactBag(Player *player) { //TODO: FIX ACTUALLY USING THE ITEMS.
             std::cout << itemNum << ": " << it->first << " (" << it->second << ')' << std::endl;
         }
         while(true) {
-            std::cin.get();
             std::cout << "\nPlease enter the item (full name) you want to use (enter back if you want to leave inventory): ";
             std::getline(std::cin, bagChoice, '\n');
             bool validItem = false;

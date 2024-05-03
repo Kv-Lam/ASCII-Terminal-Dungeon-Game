@@ -176,7 +176,10 @@ const void Player::decisions(Bag &inventory, Rooms *room) {
         while(true) {
             std::cin >> choice;
             choice = std::toupper(choice);
-            if(choice == 'M' || choice == 'L' || choice == 'B' || choice == 'S' || choice == 'Q') break;
+            if(choice == 'M' || choice == 'L' || choice == 'B' || choice == 'S' || choice == 'Q') {
+                std::cin.get();
+                break;
+            }
             std::cout << "Invalid choice. Please enter M, L, B, S, or Q: ";
         }
         switch(choice) {
