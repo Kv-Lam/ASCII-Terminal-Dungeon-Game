@@ -5,7 +5,7 @@ Enemies::Enemies(std::string enemyName, std::string enemyDialogue, std::string A
     this->enemyName = enemyName;
     this->enemyDialogue = enemyDialogue;
     this->ASCIIEnemyArt = ASCIIEnemyArt;
-    this->HP = HP;
+    this->HP = this->maxHP = HP;
     this->atk = atk;
 }
 
