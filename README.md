@@ -11,6 +11,7 @@ How to run: ```./mud (fileName)```
 How to create a file: Create a new file following the below formatting explanation. Make sure to create the rooms in order, as each room is assigned an index number from 0, to (numRooms - 1) based on when it's read (the program reads in the file from top to down). If there is no enemy, leave an empty line between the tildes (~) for the enemy name and art, then put 0 0 0 for its stats. Refer to rooms.txt if confused by the format. 
 
 Format to Create a Dungeon: 
+```
 Room Name
 ~
 Description
@@ -27,5 +28,5 @@ Enemy Art
 ~
 Enemy Dialogue
 ~
-
+```
 Possible improvements to project: Adding currency (obtaining as a drop from mobs or from random treasure chests in rooms), shop to buy or sell items, and a more complicated combat system by implementing speed, defense (along with damage calculations), or other concepts to provide a fun gameplay.
