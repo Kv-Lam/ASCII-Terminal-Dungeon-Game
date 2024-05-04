@@ -5,7 +5,7 @@
 #include <sstream>
 #include "rooms.h"
 #include "player.h"
-#include "bag.h"
+#include "inventory.h"
 #include "enemies.h"
 
 void setExit(Rooms &room, const char direction, const int roomIndex) {
@@ -92,7 +92,6 @@ Rooms *loadRooms(const std::string dungeonFilename)
         getline(fin, dialogue, '~');
         //Read in EVERYTHING about the enemy first. If enemyName ! empty, create enemy with all read in values. Else, do not create enemy.
         if (!enemyName.empty()) rooms[i].createEnemy(enemyName, dialogue, ASCIIEnemyArt, HP, ATK);
-
     }
 
     //dumpRoomss(rooms, roomCount); //Uncomment for debugging.
@@ -111,8 +110,8 @@ int main(int argc, char *argv[]) {
     Rooms *rooms = loadRooms(argv[1]); //This also checks for whether the file is openable.
 
     Player player;
-    Bag bag;
-    player.decisions(bag, rooms);
+    Inventory inventory;
+    player.decisions(inventory, rooms);
 
     // std::cout << player.getAttack() << ' ' << player.getHP() << std::endl;
     //int currentRooms = 0;

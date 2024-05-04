@@ -9,7 +9,7 @@
 class Enemies; //Forward declaration for compiling.
 
 class Rooms {
-    friend class Bag;
+    friend class Inventory;
     friend class Player;
     friend Rooms *loadRooms(const std::string dungeonFilename);
     public:

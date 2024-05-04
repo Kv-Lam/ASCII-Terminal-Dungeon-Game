@@ -105,7 +105,7 @@ void Player::displayStats() {
     return;
 }
 
-bool Player::combat(Rooms &room, Bag &inventory) {
+bool Player::combat(Rooms &room, Inventory &inventory) {
     std::cout << name << " has encountered " << room.enemy->enemyName << '!' << std::endl;
     if(!room.enemy->enemyDialogue.empty()) std::cout << room.enemy->enemyName << ": " << room.enemy->getEnemyDialogue() << std::endl;
     char choice;
@@ -122,7 +122,10 @@ bool Player::combat(Rooms &room, Bag &inventory) {
                     std::cin >> choice;
                     choice = toupper(choice);
                     if(choice != 'A' && choice != 'I' && choice != 'R' && choice != 'E') std::cout << "Invalid choice!" << std::endl;
-                    else break;
+                    else {
+                        std::cin.get(); //Gets rid of the '\n' at the end of the choice.
+                        break;
+                    }
                 }
                 switch(choice) {
                     case 'A': //Attack.
@@ -138,7 +141,7 @@ bool Player::combat(Rooms &room, Bag &inventory) {
                         }
                         break;
                     case 'I': //Inventory.
-                        inventory.interactBag(this);
+                        inventory.interactInventory(this);
                         break;
                     case 'R': //Run.
                         if(rand() % 10 < 2) { //20% chance to fail running.
@@ -169,11 +172,11 @@ bool Player::combat(Rooms &room, Bag &inventory) {
     return false;
 }
 
-const void Player::decisions(Bag &inventory, Rooms *room) {
+const void Player::decisions(Inventory &inventory, Rooms *room) {
     char choice = ' ';
     size_t currentRoom = 0;
     do {
-        std::cout << "\n\033[4mAvailable Options\033[0m\nM) Move\nL) Look\nB) Bag\nS) Stats\nQ) Quit\nPlease enter your letter choice: ";
+        std::cout << "\n\033[4mAvailable Options\033[0m\nM) Move\nL) Look\nB) Inventory\nS) Stats\nQ) Quit\nPlease enter your letter choice: ";
         while(true) {
             std::cin >> choice;
             choice = std::toupper(choice);
@@ -205,8 +208,8 @@ const void Player::decisions(Bag &inventory, Rooms *room) {
             case 'L': //For look.
                 look(room[currentRoom]);
                 break;
-            case 'B': //Bag.
-                inventory.interactBag(this);
+            case 'B': //Inventory.
+                inventory.interactInventory(this);
                 break;
             case 'S': //Stats.
                 displayStats();

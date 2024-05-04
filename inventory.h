@@ -7,16 +7,16 @@
 
 class Player; //Forward declaring player class to allow for compiling.
 
-class Bag {
+class Inventory {
     friend class Player;
     public:
-        Bag();
-        void interactBag(Player *player);
+        Inventory();
+        void interactInventory(Player *player);
     private:
         void addItem(const std::string itemName, int quantity);
         void removeItem(const std::string itemName, int quantity);
-        bool inBag(const std::string itemName);
-        std::unordered_map<std::string, int> bag; //Item name is mapped to quantity.
+        bool inInventory(const std::string itemName);
+        std::unordered_map<std::string, int> inventory; //Item name is mapped to quantity.
 };
 
 #endif

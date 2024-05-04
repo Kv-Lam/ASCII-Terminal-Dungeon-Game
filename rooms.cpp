@@ -25,5 +25,6 @@ void Rooms::createEnemy(std::string enemyName, std::string enemyDialogue, std::s
 
 void Rooms::deleteEnemy() {
     delete enemy; //Deletes enemy if the health of it is == 0.
+    enemy = NULL;
     return;
 }
