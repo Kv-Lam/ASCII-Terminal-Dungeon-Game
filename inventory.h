@@ -11,7 +11,7 @@ class Inventory {
     friend class Player;
     public:
         Inventory();
-        bool interactInventory(Player *player); //Returns true if player used item.
+        bool interactInventory(Player *player, const bool &isInCombat); //Returns true if player used item.
     private:
         void addItem(const std::string itemName, int quantity);
         void removeItem(const std::string itemName, int quantity);

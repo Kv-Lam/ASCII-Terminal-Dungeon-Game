@@ -4,8 +4,8 @@
 
 Inventory::Inventory(){}
 
-bool Inventory::interactInventory(Player *player) { //TODO: FIX ACTUALLY USING THE ITEMS.
-    const std::string itemNames[] = {"HEALTH POTION", "MAX HEALTH POTION", "ATTACK POTION"}; //Maybe move this to the private data members inside .h.
+bool Inventory::interactInventory(Player *player, const bool &isInCombat) { //TODO: FIX ACTUALLY USING THE ITEMS.
+    const std::string itemNames[] = {"health potion", "max health potion", "attack potion"}; //Maybe move this to the private data members inside .h.
     std::string inventoryChoice;
     while(true) {
         std::cout << "\n\033[4m" << player->name << "'s inventory\033[0m" << std::endl;
@@ -19,9 +19,9 @@ bool Inventory::interactInventory(Player *player) { //TODO: FIX ACTUALLY USING T
             std::getline(std::cin, inventoryChoice, '\n');
             bool validItem = false;
 
-            for(char &c : inventoryChoice) c = toupper(c);
+            for(char &c : inventoryChoice) c = tolower(c);
 
-            if(inventoryChoice == "BACK") return false;
+            if(inventoryChoice == "back") return false;
 
             for(std::string s : itemNames) {
                 if(inventoryChoice == s) {
@@ -36,21 +36,24 @@ bool Inventory::interactInventory(Player *player) { //TODO: FIX ACTUALLY USING T
 
         if(inInventory(inventoryChoice)) {
             switch(inventoryChoice[0]) {
-            case 'H': //Health potion
+            case 'h': //Health potion
                 player->currentHP = std::min(player->maxHP, player->currentHP + 3); //Can change how much potions give.
                 removeItem(inventoryChoice, 1);
+                std::cout << '\n' << player->name << " healed 3 HP!" << std::endl; 
                 break;
-            case 'M': //Max health potion
+            case 'm': //Max health potion
                 player->maxHP += 1;
                 player->currentHP += 1;
                 removeItem(inventoryChoice, 1);
+                std::cout << '\n' << player->name << "'s max health increased by 1!" << std::endl;
                 break;
-            case 'A': //Attack potion
+            case 'a': //Attack potion
                 player->atk += 1;
                 removeItem(inventoryChoice, 1);
+                std::cout << '\n' << player->name << "'s attack increased by 1!" << std::endl;
                 break;
             }
-            return true;
+            if(isInCombat) return true;
         }
         else std::cout << "You do not have any " << inventoryChoice << "s!" << std::endl;
     }
@@ -64,7 +67,7 @@ void Inventory::addItem(std::string itemName, int quantity) {
 
 void Inventory::removeItem(std::string itemName, int quantity) { //Fix this to delete the key if value == 0.
     inventory[itemName] -= quantity;
-    if(!inInventory(itemName)) inventory.erase(itemName);
+    if(inventory[itemName] == 0) inventory.erase(itemName);
     return;
 }
 

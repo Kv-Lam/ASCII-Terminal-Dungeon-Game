@@ -112,7 +112,7 @@ n 0
 ~
 [Enemy Name]
 ~
-100 100
+1 100
 ~
 [Enemy Art]
 ~

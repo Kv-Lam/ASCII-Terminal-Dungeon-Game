@@ -44,7 +44,7 @@ Player::Player() {
         std::cout << "Are you sure you want " << name << " to be your name (y or n)? ";
         std::cin >> confirmation;
         std::cin.get(); //Gets rid of newline at the end of confirmation.
-    } while(toupper(confirmation) != 'Y');
+    } while(tolower(confirmation) != 'y');
     atk = 5; //Starting atk = 5;
     maxHP = currentHP = 10; //Starting HP = 10
 }
@@ -109,9 +109,10 @@ void Player::displayStats() {
 bool Player::combat(Rooms &room, Inventory &inventory) {
     std::cout << name << " has encountered " << room.enemy->enemyName << '!' << std::endl;
     if(!room.enemy->enemyDialogue.empty()) std::cout << room.enemy->enemyName << ": " << room.enemy->getEnemyDialogue() << std::endl;
+    if(!room.enemy->ASCIIEnemyArt.empty()) std::cout << room.enemy->getASCIIEnemyArt() << std::endl;
     char choice;
     int turn = 0;
-    const std::string itemNames[] = {"HEALTH POTION", "MAX HEALTH POTION", "ATTACK POTION"};
+    const std::string itemNames[] = {"health potion", "max health potion", "attack potion"};
     srand(time(NULL));
     while(true) {
         switch(turn % 2) {
@@ -119,17 +120,17 @@ bool Player::combat(Rooms &room, Inventory &inventory) {
                 displayStats();
                 room.enemy->displayEnemyStats();
                 while(true) {
-                    std::cout << "\n\033[4mPlease select your move\033[0m\nA) Attack\nI) Inventory\nR) Run\nE) Enemy Art\nPlease enter your letter choice: ";
+                    std::cout << "\n\033[4mPlease select your move\033[0m\nA) Attack\nI) Inventory\nR) Run\nPlease enter your letter choice: ";
                     std::cin >> choice;
-                    choice = toupper(choice);
-                    if(choice != 'A' && choice != 'I' && choice != 'R' && choice != 'E') std::cout << "Invalid choice!" << std::endl;
+                    choice = tolower(choice);
+                    if(choice != 'a' && choice != 'i' && choice != 'r') std::cout << "Invalid choice!" << std::endl;
                     else {
                         std::cin.get(); //Gets rid of the '\n' at the end of the choice.
                         break;
                     }
                 }
                 switch(choice) {
-                    case 'A': //Attack.
+                    case 'a': //Attack.
                         std::cout << '\n' << name << " attacked the " << room.enemy->getEnemyName() << " for " << getAttack() << " damage!" << std::endl;
                         room.enemy->HP = std::max(0, room.enemy->HP - getAttack());
                         if(room.enemy->getHP() <= 0) {
@@ -140,10 +141,10 @@ bool Player::combat(Rooms &room, Inventory &inventory) {
                             return true;
                         }
                         break;
-                    case 'I': //Inventory.
-                        if(!inventory.interactInventory(this)) turn--; //If player did not use anything, then makes it player's turn again.
+                    case 'i': //Inventory.
+                        if(!inventory.interactInventory(this, true)) turn--; //If player did not use anything, then makes it player's turn again.
                         break;
-                    case 'R': //Run.
+                    case 'r': //Run.
                         if(rand() % 10 < 2) { //20% chance to fail running.
                             currentHP--;
                             std::cout << "\nYou failed to run away and took 1 damage as a result!" << std::endl;
@@ -158,9 +159,6 @@ bool Player::combat(Rooms &room, Inventory &inventory) {
                             std::cout << std::endl;
                             return false;
                         }
-                        break;
-                    case 'E':
-                        std::cout << room.enemy->getASCIIEnemyArt() << std::endl;
                         break;
                 }
                 break;
@@ -178,18 +176,18 @@ bool Player::combat(Rooms &room, Inventory &inventory) {
 }
 
 const void Player::decisions(Inventory &inventory, Rooms *room) {
-    char choice = ' ';
+    char choice;
     size_t currentRoom = 0;
     do {
         std::cout << "\n\033[4mAvailable Options\033[0m\nM) Move\nL) Look\nI) Inventory\nS) Stats\nQ) Quit\nPlease enter your letter choice: ";
         while(true) {
             std::cin >> choice;
-            choice = std::toupper(choice);
-            if(choice == 'M' || choice == 'L' || choice == 'I' || choice == 'S' || choice == 'Q') {
+            choice = std::tolower(choice);
+            if(choice == 'm' || choice == 'l' || choice == 'i' || choice == 's' || choice == 'q') {
                 std::cin.get();
                 break;
             }
-            std::cout << "Invalid choice. Please enter M, L, B, S, or Q: ";
+            std::cout << "Invalid choice. Please enter M, L, I, S, or Q: ";
         }
         switch(choice) {
             case 'M': //For movement and combat.
@@ -210,16 +208,16 @@ const void Player::decisions(Inventory &inventory, Rooms *room) {
                     else break; //There's no enemy.
                 }
                 break;
-            case 'L': //For look.
+            case 'l': //For look.
                 look(room[currentRoom]);
                 break;
-            case 'I': //Inventory.
-                (void) inventory.interactInventory(this);
+            case 'i': //Inventory.
+                (void) inventory.interactInventory(this, false);
                 break;
-            case 'S': //Stats.
+            case 's': //Stats.
                 displayStats();
                 break;
-            case 'Q': //Quit game.
+            case 'q': //Quit game.
                 std::cout << "Thank you for playing, " << name << '!' << std::endl;
                 //NEED TO DELETE ALL ALLOCATED STUFF IN MAIN.
                 return;
