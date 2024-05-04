@@ -51,7 +51,7 @@ Rooms *loadRooms(const std::string dungeonFilename)
     std::string stringHolder; //Holds strings for counting # of tildes.
     while(getline(fin, stringHolder, '~')) tildeCount++; //Finds total of tildes inside file.
     
-    //Calculates # of rooms. CHANGE DENOMINATOR TO HOWEVER MANY ARE NEEDED. I PUT 6, ONE PER READ IN (art counts as 2 because of enemy and room art).
+    //Calculates # of rooms. 8 things to read in: room name, room description, exits, room art, enemy name, enemy stats, enemy art, and enemy dialogue.
     size_t roomCount = tildeCount / 8;
 
     Rooms *rooms = new Rooms[roomCount];
@@ -59,6 +59,8 @@ Rooms *loadRooms(const std::string dungeonFilename)
     //Following two lines jumps back to beginning of file.
     fin.clear();
     fin.seekg(0);
+
+    int HP, ATK;
 
     //Reads in and stores the room's title, description, exits, enemy data, and arts.
     //TODO: ADD READING IN THE ARTS AND ENEMY.
@@ -81,7 +83,6 @@ Rooms *loadRooms(const std::string dungeonFilename)
         getline(fin, rooms[i].ASCIIRoomArt, '~');
         getline(fin, enemyName, '~');
         stripWhitespace(enemyName);
-        int HP, ATK;
         getline(fin, stats, '~');
         stripWhitespace(stats);
         std::istringstream enemyStats(stats);
@@ -112,6 +113,6 @@ int main(int argc, char *argv[]) {
     Player player;
     Inventory inventory;
     player.decisions(inventory, rooms);
-    delete rooms;
+    delete[] rooms;
     return 0;
 }

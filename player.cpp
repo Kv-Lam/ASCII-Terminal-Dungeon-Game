@@ -141,7 +141,7 @@ bool Player::combat(Rooms &room, Inventory &inventory) {
                         }
                         break;
                     case 'I': //Inventory.
-                        inventory.interactInventory(this);
+                        if(!inventory.interactInventory(this)) turn--; //If player did not use anything, then makes it player's turn again.
                         break;
                     case 'R': //Run.
                         if(rand() % 10 < 2) { //20% chance to fail running.
@@ -181,11 +181,11 @@ const void Player::decisions(Inventory &inventory, Rooms *room) {
     char choice = ' ';
     size_t currentRoom = 0;
     do {
-        std::cout << "\n\033[4mAvailable Options\033[0m\nM) Move\nL) Look\nB) Inventory\nS) Stats\nQ) Quit\nPlease enter your letter choice: ";
+        std::cout << "\n\033[4mAvailable Options\033[0m\nM) Move\nL) Look\nI) Inventory\nS) Stats\nQ) Quit\nPlease enter your letter choice: ";
         while(true) {
             std::cin >> choice;
             choice = std::toupper(choice);
-            if(choice == 'M' || choice == 'L' || choice == 'B' || choice == 'S' || choice == 'Q') {
+            if(choice == 'M' || choice == 'L' || choice == 'I' || choice == 'S' || choice == 'Q') {
                 std::cin.get();
                 break;
             }
@@ -213,8 +213,8 @@ const void Player::decisions(Inventory &inventory, Rooms *room) {
             case 'L': //For look.
                 look(room[currentRoom]);
                 break;
-            case 'B': //Inventory.
-                inventory.interactInventory(this);
+            case 'I': //Inventory.
+                (void) inventory.interactInventory(this);
                 break;
             case 'S': //Stats.
                 displayStats();

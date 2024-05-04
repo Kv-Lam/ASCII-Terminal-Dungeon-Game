@@ -4,8 +4,8 @@
 
 Inventory::Inventory(){}
 
-void Inventory::interactInventory(Player *player) { //TODO: FIX ACTUALLY USING THE ITEMS.
-    const std::string itemNames[] = {"health potion", "max health potion", "attack potion"}; //Maybe move this to the private data members inside .h.
+bool Inventory::interactInventory(Player *player) { //TODO: FIX ACTUALLY USING THE ITEMS.
+    const std::string itemNames[] = {"HEALTH POTION", "MAX HEALTH POTION", "ATTACK POTION"}; //Maybe move this to the private data members inside .h.
     std::string inventoryChoice;
     while(true) {
         std::cout << "\n\033[4m" << player->name << "'s inventory\033[0m" << std::endl;
@@ -19,9 +19,9 @@ void Inventory::interactInventory(Player *player) { //TODO: FIX ACTUALLY USING T
             std::getline(std::cin, inventoryChoice, '\n');
             bool validItem = false;
 
-            for(char &c : inventoryChoice) c = tolower(c);
+            for(char &c : inventoryChoice) c = toupper(c);
 
-            if(inventoryChoice == "back") return;
+            if(inventoryChoice == "BACK") return false;
 
             for(std::string s : itemNames) {
                 if(inventoryChoice == s) {
@@ -36,24 +36,24 @@ void Inventory::interactInventory(Player *player) { //TODO: FIX ACTUALLY USING T
 
         if(inInventory(inventoryChoice)) {
             switch(inventoryChoice[0]) {
-            case 'h': //Health potion
+            case 'H': //Health potion
                 player->currentHP = std::min(player->maxHP, player->currentHP + 3); //Can change how much potions give.
                 removeItem(inventoryChoice, 1);
                 break;
-            case 'm': //Max health potion
+            case 'M': //Max health potion
                 player->maxHP += 1;
                 player->currentHP += 1;
                 removeItem(inventoryChoice, 1);
                 break;
-            case 'a': //Attack potion
+            case 'A': //Attack potion
                 player->atk += 1;
                 removeItem(inventoryChoice, 1);
                 break;
             }
+            return true;
         }
         else std::cout << "You do not have any " << inventoryChoice << "s!" << std::endl;
     }
-    return;
 }
 
 void Inventory::addItem(std::string itemName, int quantity) {
