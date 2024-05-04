@@ -1,4 +1,5 @@
 Last Updated: May 3, 2024.
+
 Contributors:
 Kevin Lam (Created combat, inventory, enemies, and player)
 Sean Sullivan (Created loadRooms, ASCII arts, and rooms.txt as a sample dungeon file to play for the first time)
