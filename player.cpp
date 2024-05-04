@@ -190,7 +190,7 @@ const void Player::decisions(Inventory &inventory, Rooms *room) {
             std::cout << "Invalid choice. Please enter M, L, I, S, or Q: ";
         }
         switch(choice) {
-            case 'M': //For movement and combat.
+            case 'm': //For movement and combat.
                 while(true) {
                     if(currentHP <= 0) {
                         std::cout << name << " has been slain! Game over." << std::endl;
