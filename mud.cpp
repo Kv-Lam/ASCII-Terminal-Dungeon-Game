@@ -91,7 +91,7 @@ Rooms *loadRooms(const std::string dungeonFilename)
         getline(fin, ASCIIEnemyArt, '~');
         getline(fin, dialogue, '~');
         //Read in EVERYTHING about the enemy first. If enemyName ! empty, create enemy with all read in values. Else, do not create enemy.
-        if (!enemyName.empty()) rooms->createEnemy(enemyName, dialogue, ASCIIEnemyArt, HP, ATK);
+        if (!enemyName.empty()) rooms[i].createEnemy(enemyName, dialogue, ASCIIEnemyArt, HP, ATK);
 
     }
 
