@@ -111,7 +111,7 @@ bool Player::combat(Rooms &room, Inventory &inventory) {
     if(!room.enemy->enemyDialogue.empty()) std::cout << room.enemy->enemyName << ": " << room.enemy->getEnemyDialogue() << std::endl;
     char choice;
     int turn = 0;
-    const std::string itemNames[] = {"health potion", "max health potion", "attack potion"};
+    const std::string itemNames[] = {"HEALTH POTION", "MAX HEALTH POTION", "ATTACK POTION"};
     srand(time(NULL));
     while(true) {
         switch(turn % 2) {
