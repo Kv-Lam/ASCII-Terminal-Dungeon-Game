@@ -32,7 +32,7 @@ s 5
 ~
 [Enemy Art]
 ~
-[Enemy Dialogue]
+[Enemy Dialogu]
 ~
 Dead End (Room #1)
 ~
