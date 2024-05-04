@@ -26,11 +26,13 @@ s 5
          _.'___________________________'._             
      _.'___________________________________'._ 
 ~
- 
+[Temp Enemy]
 ~
-0 0 0
+1 1
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Dead End (Room #1)
 ~
@@ -42,9 +44,11 @@ s 6
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Dead End (Room #2)
 ~
@@ -56,9 +60,11 @@ e 3
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Hallway (Room #3)
 ~
@@ -71,9 +77,11 @@ e 4
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 A Glimps of Normalcy (Room #4)
 ~
@@ -87,9 +95,11 @@ s 9
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Main Hall (Room #5)
 ~
@@ -102,9 +112,11 @@ n 0
 ~
 [Enemy Name]
 ~
-0 0 0
+1 1 
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 A Hole In The Wall (Room #6)
 ~
@@ -120,9 +132,11 @@ n 1
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Hallway (Room #7)
 ~
@@ -136,9 +150,11 @@ w 6
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Hallway (Room #8)
 ~
@@ -151,9 +167,11 @@ w 7
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Cobblestone Room (Room #9)
 ~
@@ -166,9 +184,11 @@ n 4
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Room #10
 ~
@@ -180,9 +200,11 @@ s 15
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Bedroom (Room #11)
 ~
@@ -196,9 +218,11 @@ e 12
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 The Intersection (Room #12)
 ~
@@ -213,9 +237,11 @@ e 13
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Dungeon Left Wing (Room #13)
 ~
@@ -229,9 +255,11 @@ w 12
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Cobble Stone Room (Room #14)
 ~
@@ -245,9 +273,11 @@ s 19
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Room #15
 ~
@@ -260,9 +290,11 @@ n 10
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Room #16
 ~
@@ -275,9 +307,11 @@ e 17
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Dungeon Right Wing (Room #17)
 ~
@@ -292,9 +326,11 @@ s 22
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Cell Block B (Room #18)
 ~
@@ -308,9 +344,11 @@ n 13
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 The Void (Room #19)
 ~
@@ -324,9 +362,11 @@ n 14
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Room #20
 ~
@@ -338,9 +378,11 @@ e 21
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Room #21
 ~
@@ -353,9 +395,11 @@ w 20
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Room #22
 ~
@@ -368,9 +412,11 @@ n 17
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 Crossroads (Room #23)
 ~
@@ -383,9 +429,11 @@ e 24
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 The Throne Room (Room #24)
 ~
@@ -399,9 +447,11 @@ n 25
 ~
 [Enemy Name]
 ~
-0 0 0
+0 0
 ~
 [Enemy Art]
+~
+[Enemy Dialogue]
 ~
 The Forest (Room #25)
 ~

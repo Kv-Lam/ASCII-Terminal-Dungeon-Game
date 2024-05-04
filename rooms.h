@@ -11,6 +11,7 @@ class Enemies; //Forward declaration for compiling.
 class Rooms {
     friend class Bag;
     friend class Player;
+    friend Rooms *loadRooms(const std::string dungeonFilename);
     public:
         //Following four variables will hold which rooms the direction leads to.
         Rooms();

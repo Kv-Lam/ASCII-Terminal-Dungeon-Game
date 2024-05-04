@@ -47,12 +47,12 @@ Rooms *loadRooms(const std::string dungeonFilename)
         exit(1);
     }
 
-    size_t tildeCount = 0; //# of tildes inside file. 3 for each room.
+    size_t tildeCount = 0; //# of tildes inside file. 8 for each room.
     std::string stringHolder; //Holds strings for counting # of tildes.
     while(getline(fin, stringHolder, '~')) tildeCount++; //Finds total of tildes inside file.
     
     //Calculates # of rooms. CHANGE DENOMINATOR TO HOWEVER MANY ARE NEEDED. I PUT 6, ONE PER READ IN (art counts as 2 because of enemy and room art).
-    size_t roomCount = tildeCount / 6;
+    size_t roomCount = tildeCount / 8;
 
     Rooms *rooms = new Rooms[roomCount];
 
@@ -60,7 +60,7 @@ Rooms *loadRooms(const std::string dungeonFilename)
     fin.clear();
     fin.seekg(0);
 
-    //Reads in and stores the room's title, description, exits, enemy, and arts.
+    //Reads in and stores the room's title, description, exits, enemy data, and arts.
     //TODO: ADD READING IN THE ARTS AND ENEMY.
     for (size_t i = 0; i < roomCount; i++) {
         //Following four lines read and store the name and description then removes extra whitespaces.
@@ -69,16 +69,29 @@ Rooms *loadRooms(const std::string dungeonFilename)
         getline(fin, rooms[i].description, '~');
         stripWhitespace(rooms[i].description);
 
-        //Rest of code is for exits.
-        std::string exits; //For reading in the exits.
+        //Rest of code is for exits and enemy data/arts.
+        std::string exits, enemyName, stats, ASCIIEnemyArt, dialogue; //For reading in the exits.
         getline(fin, exits, '~');
         stripWhitespace(exits);
         std::istringstream sin(exits);
         char direction; //Direction of the exit.
         int room_index; //Rooms the exit leads to.
         while(sin >> direction >> room_index) setExit(rooms[i], direction, room_index); //Reads in the direction/index and sets the room exits.
-        getline(fin, rooms[i].ASCIIRoomArt, '~');
         sin.clear(); //Clears istringstream for use again.
+        getline(fin, rooms[i].ASCIIRoomArt, '~');
+        getline(fin, enemyName, '~');
+        stripWhitespace(enemyName);
+        int HP, ATK;
+        getline(fin, stats, '~');
+        stripWhitespace(stats);
+        std::istringstream enemyStats(stats);
+        enemyStats >> HP >> ATK;
+        // std::cout << HP << "Enemy #" << i << "'s HP" << std::endl; //For testing if HP is being correctly stored.
+        enemyStats.clear();
+        getline(fin, ASCIIEnemyArt, '~');
+        getline(fin, dialogue, '~');
+        //Read in EVERYTHING about the enemy first. If enemyName ! empty, create enemy with all read in values. Else, do not create enemy.
+        if (!enemyName.empty()) rooms->createEnemy(enemyName, dialogue, ASCIIEnemyArt, HP, ATK);
 
     }
 
