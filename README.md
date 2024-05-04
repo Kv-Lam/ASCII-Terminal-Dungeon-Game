@@ -1,3 +1,4 @@
+Last Updated: May 3, 2024.
 Contributors:
 Kevin Lam (Created combat, inventory, enemies, and player)
 Sean Sullivan (Created loadRooms, ASCII arts, and rooms.txt as a sample dungeon file to play for the first time)
@@ -25,3 +26,5 @@ Enemy Art
 ~
 Enemy Dialogue
 ~
+
+Possible improvements to project: Adding currency (obtaining as a drop from mobs or from random treasure chests in rooms), shop to buy or sell items, and a more complicated combat system by implementing speed, defense (along with damage calculations), or other concepts to provide a fun gameplay.
