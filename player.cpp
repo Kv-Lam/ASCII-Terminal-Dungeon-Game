@@ -120,10 +120,11 @@ bool Player::combat(Rooms &room, Bag &inventory) {
                 while(true) {
                     std::cout << "\n\033[4mPlease select your move\033[0m\nA) Attack\nI) Inventory\nR) Run\nE) Enemy Art\nPlease enter your letter choice: ";
                     std::cin >> choice;
-                    if(choice != 'A'|| choice != 'I' || choice != 'R' || choice != 'E') std::cout << "Invalid choice!" << std::endl;
+                    choice = toupper(choice);
+                    if(choice != 'A' && choice != 'I' && choice != 'R' && choice != 'E') std::cout << "Invalid choice!" << std::endl;
                     else break;
                 }
-                switch(toupper(choice)) {
+                switch(choice) {
                     case 'A': //Attack.
                         std::cout << name << " attacked the " << room.enemy->getEnemyName() << " for " << getAttack() << " damage!" << std::endl;
                         room.enemy->HP -= getAttack();
