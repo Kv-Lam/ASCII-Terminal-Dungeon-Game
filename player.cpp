@@ -1,5 +1,6 @@
 #include "player.h"
 #include "rooms.h"
+#include <algorithm>
 #include <ctime>
 #include <cstdlib>
 #include <iostream>
@@ -129,12 +130,11 @@ bool Player::combat(Rooms &room, Inventory &inventory) {
                 }
                 switch(choice) {
                     case 'A': //Attack.
-                        std::cout << name << " attacked the " << room.enemy->getEnemyName() << " for " << getAttack() << " damage!" << std::endl;
-                        room.enemy->HP -= getAttack();
-                        std::cout << room.enemy->getEnemyName() << "'s HP: " << room.enemy->getHP();
+                        std::cout << '\n' << name << " attacked the " << room.enemy->getEnemyName() << " for " << getAttack() << " damage!" << std::endl;
+                        room.enemy->HP = std::max(0, room.enemy->HP - getAttack());
                         if(room.enemy->getHP() <= 0) {
                             int itemReceivedIndex = rand() % 3;
-                            std::cout << name << " has killed the " << room.enemy->getEnemyName() << " and received a/an " << itemNames[itemReceivedIndex] << "!";
+                            std::cout << name << " has killed the " << room.enemy->getEnemyName() << " and received a/an " << itemNames[itemReceivedIndex] << "!" << std::endl;
                             room.deleteEnemy();
                             inventory.addItem(itemNames[itemReceivedIndex], 1);
                             return true;
@@ -146,10 +146,16 @@ bool Player::combat(Rooms &room, Inventory &inventory) {
                     case 'R': //Run.
                         if(rand() % 10 < 2) { //20% chance to fail running.
                             currentHP--;
-                            std::cout << "You failed to run away and took 1 damage as a result!" << std::endl;
+                            std::cout << "\nYou failed to run away and took 1 damage as a result!" << std::endl;
                         }
                         else {
-                            std::cout << "You turned tail and successfully fled from the battle!" << std::endl;
+                            std::cout << "\nYou turned tail and successfully fled from the battle!" << std::endl;
+                            std::cout << "\nExits:";
+                            if(-1 < room.north) std::cout << " n";
+                            if(-1 < room.south) std::cout << " s";
+                            if(-1 < room.east) std::cout << " e";
+                            if(-1 < room.west) std::cout << " w";
+                            std::cout << std::endl;
                             return false;
                         }
                         break;
@@ -159,9 +165,8 @@ bool Player::combat(Rooms &room, Inventory &inventory) {
                 }
                 break;
             case 1: //Enemy's turn.
-                std::cout << room.enemy->getEnemyName() << " attacked " << name << " for " << room.enemy->getAttack() << "!";
-                if((currentHP -= room.enemy->getAttack()) <= 0) { //TODO: Check if player died inside of decisions().
-                    std::cout << name << " has been slain! Game over." << std::endl;
+                std::cout << room.enemy->getEnemyName() << " attacked " << name << " for " << room.enemy->getAttack() << "!" << std::endl;
+                if((currentHP = std::max(0, currentHP - room.enemy->getAttack())) <= 0) { //TODO: Check if player died inside of decisions().
                     return false;
                 }
                 break;
@@ -190,7 +195,7 @@ const void Player::decisions(Inventory &inventory, Rooms *room) {
             case 'M': //For movement and combat.
                 while(true) {
                     if(currentHP <= 0) {
-                        std::cout << name << " has died! Game over." << std::endl;
+                        std::cout << name << " has been slain! Game over." << std::endl;
                         return;
                     }
                     move(room, currentRoom);

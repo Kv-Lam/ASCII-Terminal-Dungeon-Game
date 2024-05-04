@@ -112,17 +112,6 @@ int main(int argc, char *argv[]) {
     Player player;
     Inventory inventory;
     player.decisions(inventory, rooms);
-
-    // std::cout << player.getAttack() << ' ' << player.getHP() << std::endl;
-    //int currentRooms = 0;
-    // std::vector<std::vector<Rooms> > dungeon(sizeOfDungeon, std::vector<Rooms>(sizeOfDungeon)); //Each position corresponds to a new room.
-    //std::vector<std::vector<std::string> > dungeon(sizeOfDungeon, std::vector<std::string>(sizeOfDungeon, "st")); This is how to make a 2D sized array of strings.
-    // for(int i = 0; i < sizeOfDungeon; i++) {
-    //     for(int j = 0; j < sizeOfDungeon; j++) {
-    //         std::cout << dungeon[i][j].name;
-    //     }
-    //     std::cout << std::endl;
-    // }
-    // delete rooms;
+    delete rooms;
     return 0;
 }
