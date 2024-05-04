@@ -2,8 +2,6 @@
 #define ROOMS_H
 
 #include <string>
-#include <vector>
-
 #include "enemies.h"
 
 class Enemies; //Forward declaration for compiling.
