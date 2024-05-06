@@ -35,22 +35,25 @@ bool Inventory::interactInventory(Player *player, const bool &isInCombat) { //TO
         }
 
         if(inInventory(inventoryChoice)) {
+            short healthPotionHeal = 5;
+            short maxHPPotionGive = 2;
+            short attackPotionGive = 1;
             switch(inventoryChoice[0]) {
             case 'h': //Health potion
-                player->currentHP = std::min(player->maxHP, player->currentHP + 3); //Can change how much potions give.
+                player->currentHP = std::min(player->maxHP, player->currentHP + healthPotionHeal); //Can change how much potions give.
                 removeItem(inventoryChoice, 1);
-                std::cout << '\n' << player->name << " healed 3 HP!" << std::endl; 
+                std::cout << '\n' << player->name << " healed " << healthPotionHeal <<" HP!" << std::endl; 
                 break;
             case 'm': //Max health potion
-                player->maxHP += 1;
-                player->currentHP += 1;
+                player->maxHP += maxHPPotionGive;
+                player->currentHP += maxHPPotionGive;
                 removeItem(inventoryChoice, 1);
-                std::cout << '\n' << player->name << "'s max health increased by 1!" << std::endl;
+                std::cout << '\n' << player->name << "'s max health increased by " << maxHPPotionGive << "!" << std::endl;
                 break;
             case 'a': //Attack potion
-                player->atk += 1;
+                player->atk += attackPotionGive;
                 removeItem(inventoryChoice, 1);
-                std::cout << '\n' << player->name << "'s attack increased by 1!" << std::endl;
+                std::cout << '\n' << player->name << "'s attack increased by " << attackPotionGive << "!" << std::endl;
                 break;
             }
             if(isInCombat) return true;
