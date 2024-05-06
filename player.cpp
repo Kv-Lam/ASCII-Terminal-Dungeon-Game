@@ -107,7 +107,7 @@ void Player::displayStats() {
 }
 
 bool Player::combat(Rooms &room, Inventory &inventory) {
-    std::cout << name << " has encountered " << room.enemy->enemyName << '!' << std::endl;
+    std::cout << '\n' << name << " has encountered " << room.enemy->enemyName << '!' << std::endl;
     if(!room.enemy->enemyDialogue.empty()) std::cout << room.enemy->enemyName << ": " << room.enemy->getEnemyDialogue() << std::endl;
     if(!room.enemy->ASCIIEnemyArt.empty()) std::cout << room.enemy->getASCIIEnemyArt() << std::endl;
     char choice;
