@@ -891,7 +891,7 @@ The Warden
 ..................................................
 ~
 A burly looking figure appears from inside one of the cells.
-He steps out and stares at you for a moment before determining your a
+He steps out and stares at you for a moment before determining you're a
 threat and attempting to deal with you as such.
 ~
 The Void
