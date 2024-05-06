@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <vector>
 #include "rooms.h"
 #include "player.h"
 #include "inventory.h"
@@ -28,10 +29,13 @@ void setExit(Rooms &room, const char direction, const int roomIndex) {
 }
 
 void stripWhitespace(std::string &str) {
-    while (isspace(str.back())) {
+    // Trim trailing whitespace
+    while (!str.empty() && isspace(str.back())) {
         str.pop_back();
     }
-    while (isspace(str.front())) {
+
+    // Trim leading whitespace
+    while (!str.empty() && isspace(str.front())) {
         str.erase(str.begin());
     }
     return;
