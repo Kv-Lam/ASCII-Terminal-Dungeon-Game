@@ -179,6 +179,12 @@ const void Player::decisions(Inventory &inventory, Rooms *room) {
     char choice;
     size_t currentRoom = 0;
     do {
+        //Checks if it's the final room after beating boss.
+        if((room[currentRoom].north == -1) && (room[currentRoom].south == -1) && (room[currentRoom].east == -1) && (room[currentRoom].west == -1)) { 
+            std::cout << room[currentRoom].name << '\n' << room[currentRoom].description << std::endl;
+            if(!room[currentRoom].ASCIIRoomArt.empty()) std::cout << room[currentRoom].getASCIIRoomArt();
+            return;
+        }
         std::cout << "\n\033[4mAvailable Options\033[0m\nM) Move\nL) Look\nI) Inventory\nS) Stats\nQ) Quit\nPlease enter your letter choice: ";
         while(true) {
             std::cin >> choice;
