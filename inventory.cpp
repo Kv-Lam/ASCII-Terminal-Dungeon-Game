@@ -6,6 +6,9 @@ Inventory::Inventory(){}
 
 bool Inventory::interactInventory(Player *player, const bool &isInCombat) { //TODO: FIX ACTUALLY USING THE ITEMS.
     const std::string itemNames[] = {"health potion", "max health potion", "attack potion"}; //Maybe move this to the private data members inside .h.
+    short healthPotionHeal = 5;
+    short maxHPPotionGive = 2;
+    short attackPotionGive = 1;
     std::string inventoryChoice;
     while(true) {
         std::cout << "\n\033[4m" << player->name << "'s inventory\033[0m" << std::endl;
@@ -35,9 +38,6 @@ bool Inventory::interactInventory(Player *player, const bool &isInCombat) { //TO
         }
 
         if(inInventory(inventoryChoice)) {
-            short healthPotionHeal = 5;
-            short maxHPPotionGive = 2;
-            short attackPotionGive = 1;
             switch(inventoryChoice[0]) {
             case 'h': //Health potion
                 player->currentHP = std::min(player->maxHP, player->currentHP + healthPotionHeal); //Can change how much potions give.
