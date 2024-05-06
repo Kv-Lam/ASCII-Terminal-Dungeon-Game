@@ -2,6 +2,7 @@
 #include <cctype>
 #include <fstream>
 #include <sstream>
+#include <string>
 #include "rooms.h"
 #include "player.h"
 #include "inventory.h"

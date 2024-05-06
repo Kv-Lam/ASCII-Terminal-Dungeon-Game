@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <cctype>
+#include <string>
 
 //Following two functions are helpers.
 std::string getDirectionName(const char direction) {
