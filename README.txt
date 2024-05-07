@@ -9,10 +9,12 @@ Commands can be entered in both upper and lowercase and are as follows
 "L" is to view the room name, description, ASCII art, and exits to the current room.
 "I" is to access the players inventory
 "M" is to move between rooms.
+    Upon using the move command, the player will be prompted to input an exit they would like to travel through.
 "S" is to access the players stats.
 "Q" is to quit the game.
 "A" (Only available during combat) is to attack the current Enemy
 "R" (Only available combat) is to flee from combat
 
-When in the inventory the full name of the desired item to be used must be entered to use it. During combat, the player is only able to use one item. Item usage during combat takes a turn.
+When in the inventory the full name of the desired item to be used must be entered to use it. 
+During combat, the player is only able to use one item. Item usage during combat takes a turn.
 When you are finished in the inventory enter "back" to exit.

@@ -1,0 +1,19 @@
+Write Up:
+
+    What went well:
+
+        We worked well and effectively in our group. Both of us finished what was assigned to the both of us in
+        the time we needed, and we helped each other if one of us was struggling. We were also able to work well
+        coding together despite our differences in syntax preference.
+
+    What went less well:
+
+        Nothing went wrong in particular. There were some difficulties running our program on the Tesla Machine,
+        but we were able to resolve the issue without too much trouble. As stated previously, we worked well together
+        and helped each other if we needed it, so there wasn't much of anything that went poorly.
+
+    What we learned/Why we should get full discretionary points:
+
+        We learned how to work together as a team, time manage, and divide and conquer the task we had before us.
+        We worked for a long time on this project (combined total ~24 hours) and we are happy with the final project
+        and hope that others enjoy it as well.
