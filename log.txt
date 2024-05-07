@@ -1,11 +1,15 @@
 Tracked Times:
     Sean Sullivan:
-        - 1 hour creating and debugging loadrooms function.
-        - 7-8 hours creating the rooms.txt file in its entirety which includes:
-                Room names, unique room and enemy descriptions, enemy names, enemy stats,
-                and enemy and room arts (all file contents are original creations).
-        - 2 hours debugging file reading using fstream to ensure room objects were being properly
-          created and stored into the room array.
-
+      - 1 hour creating and debugging loadrooms function.
+      - 7-8 hours creating the rooms.txt file in its entirety which includes:
+              Room names, unique room and enemy descriptions, enemy names, enemy stats,
+              and enemy and room arts (all file contents are original creations).
+      - 2 hours debugging file reading using fstream to ensure room objects were being properly
+        created and stored into the room array.
 
     Kevin Lam:
+      - 3 hours creating the header files, cpp files, and makefile.
+      - 5 hours making inventory system and decisions for the player.
+      - 4 hours implementing combat function and debugging.
+      - 2 hours debugging to fix the file reading issue resulting in a core dump (stripWhitespace)
+      - 1-2 hour(s) fully commenting and cleaning up code for final submission.

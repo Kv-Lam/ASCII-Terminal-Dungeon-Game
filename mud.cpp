@@ -29,15 +29,12 @@ void setExit(Rooms &room, const char direction, const int roomIndex) {
 }
 
 void stripWhitespace(std::string &str) {
-    // Trim trailing whitespace
-    while (!str.empty() && isspace(str.back())) {
-        str.pop_back();
-    }
+    //Trim trailing whitespace.
+    while (!str.empty() && isspace(str.back())) str.pop_back();
 
-    // Trim leading whitespace
-    while (!str.empty() && isspace(str.front())) {
-        str.erase(str.begin());
-    }
+    //Trim leading whitespace.
+    while (!str.empty() && isspace(str.front())) str.erase(str.begin());
+
     return;
 }
 
@@ -45,8 +42,7 @@ Rooms *loadRooms(const std::string dungeonFilename)
 {
     std::ifstream fin(dungeonFilename);
     //Following if-statement checks for any file opening errors.
-    if(!(fin.is_open()))
-    {
+    if(!(fin.is_open())) {
         std::cerr << "Error: File did not open correctly" << std::endl;
         exit(1);
     }
@@ -64,42 +60,40 @@ Rooms *loadRooms(const std::string dungeonFilename)
     fin.clear();
     fin.seekg(0);
 
-    int HP, ATK;
-
     //Reads in and stores the room's title, description, exits, enemy data, and arts.
-    //TODO: ADD READING IN THE ARTS AND ENEMY.
     for (size_t i = 0; i < roomCount; i++) {
+        //Following variables are for reading in information from the file.
+        char direction; //Direction of the exit.
+        int HP, ATK;
+        int room_index; //Rooms the exit leads to.
+        std::string exits, enemyName, stats, ASCIIEnemyArt, dialogue;
+
         //Following four lines read and store the name and description then removes extra whitespaces.
         getline(fin, rooms[i].name, '~');
         stripWhitespace(rooms[i].name);
         getline(fin, rooms[i].description, '~');
         stripWhitespace(rooms[i].description);
 
-        //Rest of code is for exits and enemy data/arts.
-        std::string exits, enemyName, stats, ASCIIEnemyArt, dialogue; //For reading in the exits.
+        //Following eight lines is for exits and enemy data/arts.
         getline(fin, exits, '~');
         stripWhitespace(exits);
         std::istringstream sin(exits);
-        char direction; //Direction of the exit.
-        int room_index; //Rooms the exit leads to.
         while(sin >> direction >> room_index) setExit(rooms[i], direction, room_index); //Reads in the direction/index and sets the room exits.
-        sin.clear(); //Clears istringstream for use again.
+        sin.clear(); //Clears istringstream for use in next loop.
+        
+        //Rest of the code reads in room art and enemy info. Read in EVERYTHING about the enemy first. If enemyName ! empty, create enemy with all read in values.
         getline(fin, rooms[i].ASCIIRoomArt, '~');
         getline(fin, enemyName, '~');
         stripWhitespace(enemyName);
         getline(fin, stats, '~');
         stripWhitespace(stats);
-        std::istringstream enemyStats(stats);
-        enemyStats >> HP >> ATK;
-        // std::cout << HP << "Enemy #" << i << "'s HP" << std::endl; //For testing if HP is being correctly stored.
-        enemyStats.clear();
+        sin.str(stats);
+        sin >> HP >> ATK;
+        sin.clear();
         getline(fin, ASCIIEnemyArt, '~');
         getline(fin, dialogue, '~');
-        //Read in EVERYTHING about the enemy first. If enemyName ! empty, create enemy with all read in values. Else, do not create enemy.
         if (!enemyName.empty()) rooms[i].createEnemy(enemyName, dialogue, ASCIIEnemyArt, HP, ATK);
     }
-
-    //dumpRoomss(rooms, roomCount); //Uncomment for debugging.
 
     fin.close();
     return rooms;
@@ -112,11 +106,11 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    Rooms *rooms = loadRooms(argv[1]); //This also checks for whether the file is openable.
+    Rooms *rooms = loadRooms(argv[1]); //Returns a pointer to an array of Rooms.
 
     Player player;
     Inventory inventory;
-    player.decisions(inventory, rooms);
-    delete[] rooms;
+    player.decisions(inventory, rooms); //Starts the actual game.
+    delete[] rooms; //Clears up the memory used.
     return 0;
 }
