@@ -12,7 +12,7 @@ Enemies::Enemies(std::string enemyName, std::string enemyDialogue, std::string A
 const void Enemies::displayEnemyStats() {
     std::cout << "\n\033[4m" << enemyName << "'s stats\033[0m" << std::endl; //Underlined enemyName's stats.
     std::cout << "HP: " << HP << '/' << maxHP << std::endl;
-    std::cout << "ATK: ?" << std::endl; //atk << std::endl; if you want to actually display the attack of the enemy.
+    std::cout << "ATK: ?" << std::endl; //atk << std::endl; Use this instead if you want to actually display the attack of the enemy.
     return;
 }
 

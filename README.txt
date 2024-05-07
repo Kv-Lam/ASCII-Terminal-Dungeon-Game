@@ -14,5 +14,5 @@ Commands can be entered in both upper and lowercase and are as follows
 "A" (Only available during combat) is to attack the current Enemy
 "R" (Only available combat) is to flee from combat
 
-When in the inventory the full name of the desired item to be used must be entered to use it. During combat, the player is only able to use one item. Item usage during combat takes a turn.
+When in the inventory the full name of the desired item to be used must be entered to use it. During combat, the player is only able to use one item per turn. Item usage during combat takes a turn.
 When you are finished in the inventory enter "back" to exit.
