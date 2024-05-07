@@ -12,13 +12,13 @@ class Player {
     friend class Inventory;
     public:
         Player(); //Prompts for user name (asks for confirmation) and sets base atk & hp to 5 and 10 respectively.
-        const int getAttack();
-        const int getCurrentHP();
-        const int getMaxHP();
-        const std::string getPlayerName();
-        const void decisions(Inventory &inventory, Rooms *room);
-        void displayStats();
-        bool combat(Rooms &room, Inventory &inventory);
+        const int getAttack(); //Returns atk.
+        const int getCurrentHP(); //Returns currentHP.
+        const int getMaxHP(); //Returns maxHP.
+        const std::string getPlayerName(); //Returns name.
+        const void decisions(Inventory &inventory, Rooms *room); //The actual game. Calls different functions based on the player's decision.
+        void displayStats(); //Prints out the player's current stats.
+        bool combat(Rooms &room, Inventory &inventory); //Combat system. Returns true if enemy is killed, false if not.
     private:
         int maxHP;
         int currentHP;
