@@ -4,3 +4,5 @@ git push //Pushes all committed files into github.
 git pull //Pulls all updated files.
 git status //Shows status of currently followed files.
 git reset (filename) //Removes a file from "Changes to be commited" list if you don't want to commit a file in the list.
+git restore (filename) //Removes changes made to a file as long as it's not under "Changes to be commited" otherwise,
+                         refer to the previous command "git reset (filename)".
