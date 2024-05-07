@@ -1,4 +1,4 @@
-Last Updated: May 6, 2024.
+Last Updated: May 7, 2024.
 
 Contributors:
 - Kevin Lam (Created combat, inventory, enemies, and player)
