@@ -3,3 +3,4 @@ git commit -a -m "comment" //Commits all staged files with a comments on what wa
 git push //Pushes all committed files into github.
 git pull //Pulls all updated files.
 git status //Shows status of currently followed files.
+git reset (filename) //Removes a file from "Changes to be commited" list if you don't want to commit a file in the list.
