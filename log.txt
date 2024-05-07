@@ -1,0 +1,11 @@
+Tracked Times:
+    Sean Sullivan:
+        - 1 hour creating and debugging loadrooms function.
+        - 7-8 hours creating the rooms.txt file in its entirety which includes:
+                Room names, unique room and enemy descriptions, enemy names, enemy stats,
+                and enemy and room arts (all file contents are original creations).
+        - 2 hours debugging file reading using fstream to ensure room objects were being properly
+          created and stored into the room array.
+
+
+    Kevin Lam:
